@@ -31,14 +31,6 @@ using System.Xml.Serialization;
 [System.Xml.Serialization.XmlIncludeAttribute(typeof(SearchDefinition))]
 public partial class ProvisioningWebService : System.Web.Services.Protocols.SoapHttpClientProtocol {
     
-    private System.Threading.SendOrPostCallback RemoveServicePrincipalByAppPrincipalIdOperationCompleted;
-    
-    private System.Threading.SendOrPostCallback RemoveServicePrincipalBySpnOperationCompleted;
-    
-    private System.Threading.SendOrPostCallback GetServicePrincipalOperationCompleted;
-    
-    private System.Threading.SendOrPostCallback GetServicePrincipalByAppPrincipalIdOperationCompleted;
-    
     private System.Threading.SendOrPostCallback GetServicePrincipalBySpnOperationCompleted;
     
     private System.Threading.SendOrPostCallback RemoveServicePrincipalCredentialsOperationCompleted;
@@ -58,8 +50,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     private System.Threading.SendOrPostCallback ListServicePrincipalCredentialsByAppPrincipalIdOperationCompleted;
     
     private System.Threading.SendOrPostCallback ListServicePrincipalCredentialsBySpnOperationCompleted;
-    
-    private System.Threading.SendOrPostCallback NavigateGroupMemberResultsOperationCompleted;
     
     private System.Threading.SendOrPostCallback RetryGroupProvisioningOperationCompleted;
     
@@ -113,8 +103,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     
     private System.Threading.SendOrPostCallback ListUsersOperationCompleted;
     
-    private System.Threading.SendOrPostCallback ListUsersByStrongAuthenticationOperationCompleted;
-    
     private System.Threading.SendOrPostCallback NavigateUserResultsOperationCompleted;
     
     private System.Threading.SendOrPostCallback SetUserLicensesOperationCompleted;
@@ -129,10 +117,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     
     private System.Threading.SendOrPostCallback RestoreUserByUpnOperationCompleted;
     
-    private System.Threading.SendOrPostCallback ResetStrongAuthenticationMethodByUpnOperationCompleted;
-    
-    private System.Threading.SendOrPostCallback DeleteApplicationPasswordOperationCompleted;
-    
     private System.Threading.SendOrPostCallback AddServicePrincipalOperationCompleted;
     
     private System.Threading.SendOrPostCallback AddServicePrincipalCredentialsOperationCompleted;
@@ -143,9 +127,15 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     
     private System.Threading.SendOrPostCallback RemoveServicePrincipalOperationCompleted;
     
-    private System.Threading.SendOrPostCallback GetHeaderInfoOperationCompleted;
+    private System.Threading.SendOrPostCallback RemoveServicePrincipalByAppPrincipalIdOperationCompleted;
     
-    private System.Threading.SendOrPostCallback GetServiceStatusOperationCompleted;
+    private System.Threading.SendOrPostCallback RemoveServicePrincipalBySpnOperationCompleted;
+    
+    private System.Threading.SendOrPostCallback GetServicePrincipalOperationCompleted;
+    
+    private System.Threading.SendOrPostCallback GetServicePrincipalByAppPrincipalIdOperationCompleted;
+    
+    private System.Threading.SendOrPostCallback GetHeaderInfoOperationCompleted;
     
     private System.Threading.SendOrPostCallback MsolConnectOperationCompleted;
     
@@ -227,23 +217,13 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     
     private System.Threading.SendOrPostCallback ListGroupMembersOperationCompleted;
     
+    private System.Threading.SendOrPostCallback NavigateGroupMemberResultsOperationCompleted;
+    
     /// <remarks/>
     public ProvisioningWebService() {
         this.SoapVersion = System.Web.Services.Protocols.SoapProtocolVersion.Soap12;
         this.Url = "https://provisioningapi.microsoftonline.com/ProvisioningWebService.svc";
     }
-    
-    /// <remarks/>
-    public event RemoveServicePrincipalByAppPrincipalIdCompletedEventHandler RemoveServicePrincipalByAppPrincipalIdCompleted;
-    
-    /// <remarks/>
-    public event RemoveServicePrincipalBySpnCompletedEventHandler RemoveServicePrincipalBySpnCompleted;
-    
-    /// <remarks/>
-    public event GetServicePrincipalCompletedEventHandler GetServicePrincipalCompleted;
-    
-    /// <remarks/>
-    public event GetServicePrincipalByAppPrincipalIdCompletedEventHandler GetServicePrincipalByAppPrincipalIdCompleted;
     
     /// <remarks/>
     public event GetServicePrincipalBySpnCompletedEventHandler GetServicePrincipalBySpnCompleted;
@@ -274,9 +254,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     
     /// <remarks/>
     public event ListServicePrincipalCredentialsBySpnCompletedEventHandler ListServicePrincipalCredentialsBySpnCompleted;
-    
-    /// <remarks/>
-    public event NavigateGroupMemberResultsCompletedEventHandler NavigateGroupMemberResultsCompleted;
     
     /// <remarks/>
     public event RetryGroupProvisioningCompletedEventHandler RetryGroupProvisioningCompleted;
@@ -357,9 +334,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     public event ListUsersCompletedEventHandler ListUsersCompleted;
     
     /// <remarks/>
-    public event ListUsersByStrongAuthenticationCompletedEventHandler ListUsersByStrongAuthenticationCompleted;
-    
-    /// <remarks/>
     public event NavigateUserResultsCompletedEventHandler NavigateUserResultsCompleted;
     
     /// <remarks/>
@@ -381,12 +355,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     public event RestoreUserByUpnCompletedEventHandler RestoreUserByUpnCompleted;
     
     /// <remarks/>
-    public event ResetStrongAuthenticationMethodByUpnCompletedEventHandler ResetStrongAuthenticationMethodByUpnCompleted;
-    
-    /// <remarks/>
-    public event DeleteApplicationPasswordCompletedEventHandler DeleteApplicationPasswordCompleted;
-    
-    /// <remarks/>
     public event AddServicePrincipalCompletedEventHandler AddServicePrincipalCompleted;
     
     /// <remarks/>
@@ -402,10 +370,19 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     public event RemoveServicePrincipalCompletedEventHandler RemoveServicePrincipalCompleted;
     
     /// <remarks/>
-    public event GetHeaderInfoCompletedEventHandler GetHeaderInfoCompleted;
+    public event RemoveServicePrincipalByAppPrincipalIdCompletedEventHandler RemoveServicePrincipalByAppPrincipalIdCompleted;
     
     /// <remarks/>
-    public event GetServiceStatusCompletedEventHandler GetServiceStatusCompleted;
+    public event RemoveServicePrincipalBySpnCompletedEventHandler RemoveServicePrincipalBySpnCompleted;
+    
+    /// <remarks/>
+    public event GetServicePrincipalCompletedEventHandler GetServicePrincipalCompleted;
+    
+    /// <remarks/>
+    public event GetServicePrincipalByAppPrincipalIdCompletedEventHandler GetServicePrincipalByAppPrincipalIdCompleted;
+    
+    /// <remarks/>
+    public event GetHeaderInfoCompletedEventHandler GetHeaderInfoCompleted;
     
     /// <remarks/>
     public event MsolConnectCompletedEventHandler MsolConnectCompleted;
@@ -528,176 +505,7 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     public event ListGroupMembersCompletedEventHandler ListGroupMembersCompleted;
     
     /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/RemoveServicePrin" +
-        "cipalByAppPrincipalId", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public Response RemoveServicePrincipalByAppPrincipalId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] RemoveServicePrincipalByAppPrincipalIdRequest request) {
-        object[] results = this.Invoke("RemoveServicePrincipalByAppPrincipalId", new object[] {
-                    request});
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginRemoveServicePrincipalByAppPrincipalId(RemoveServicePrincipalByAppPrincipalIdRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("RemoveServicePrincipalByAppPrincipalId", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public Response EndRemoveServicePrincipalByAppPrincipalId(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void RemoveServicePrincipalByAppPrincipalIdAsync(RemoveServicePrincipalByAppPrincipalIdRequest request) {
-        this.RemoveServicePrincipalByAppPrincipalIdAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void RemoveServicePrincipalByAppPrincipalIdAsync(RemoveServicePrincipalByAppPrincipalIdRequest request, object userState) {
-        if ((this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted == null)) {
-            this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveServicePrincipalByAppPrincipalIdOperationCompleted);
-        }
-        this.InvokeAsync("RemoveServicePrincipalByAppPrincipalId", new object[] {
-                    request}, this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted, userState);
-    }
-    
-    private void OnRemoveServicePrincipalByAppPrincipalIdOperationCompleted(object arg) {
-        if ((this.RemoveServicePrincipalByAppPrincipalIdCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.RemoveServicePrincipalByAppPrincipalIdCompleted(this, new RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/RemoveServicePrin" +
-        "cipalBySpn", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public Response RemoveServicePrincipalBySpn([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] RemoveServicePrincipalBySpnRequest request) {
-        object[] results = this.Invoke("RemoveServicePrincipalBySpn", new object[] {
-                    request});
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginRemoveServicePrincipalBySpn(RemoveServicePrincipalBySpnRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("RemoveServicePrincipalBySpn", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public Response EndRemoveServicePrincipalBySpn(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void RemoveServicePrincipalBySpnAsync(RemoveServicePrincipalBySpnRequest request) {
-        this.RemoveServicePrincipalBySpnAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void RemoveServicePrincipalBySpnAsync(RemoveServicePrincipalBySpnRequest request, object userState) {
-        if ((this.RemoveServicePrincipalBySpnOperationCompleted == null)) {
-            this.RemoveServicePrincipalBySpnOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveServicePrincipalBySpnOperationCompleted);
-        }
-        this.InvokeAsync("RemoveServicePrincipalBySpn", new object[] {
-                    request}, this.RemoveServicePrincipalBySpnOperationCompleted, userState);
-    }
-    
-    private void OnRemoveServicePrincipalBySpnOperationCompleted(object arg) {
-        if ((this.RemoveServicePrincipalBySpnCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.RemoveServicePrincipalBySpnCompleted(this, new RemoveServicePrincipalBySpnCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServicePrincip" +
-        "al", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public GetServicePrincipalResponse GetServicePrincipal([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] GetServicePrincipalRequest request) {
-        object[] results = this.Invoke("GetServicePrincipal", new object[] {
-                    request});
-        return ((GetServicePrincipalResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginGetServicePrincipal(GetServicePrincipalRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("GetServicePrincipal", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public GetServicePrincipalResponse EndGetServicePrincipal(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((GetServicePrincipalResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void GetServicePrincipalAsync(GetServicePrincipalRequest request) {
-        this.GetServicePrincipalAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void GetServicePrincipalAsync(GetServicePrincipalRequest request, object userState) {
-        if ((this.GetServicePrincipalOperationCompleted == null)) {
-            this.GetServicePrincipalOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetServicePrincipalOperationCompleted);
-        }
-        this.InvokeAsync("GetServicePrincipal", new object[] {
-                    request}, this.GetServicePrincipalOperationCompleted, userState);
-    }
-    
-    private void OnGetServicePrincipalOperationCompleted(object arg) {
-        if ((this.GetServicePrincipalCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.GetServicePrincipalCompleted(this, new GetServicePrincipalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServicePrincip" +
-        "alByAppPrincipalId", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public GetServicePrincipalByAppPrincipalIdResponse GetServicePrincipalByAppPrincipalId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] GetServicePrincipalByAppPrincipalIdRequest request) {
-        object[] results = this.Invoke("GetServicePrincipalByAppPrincipalId", new object[] {
-                    request});
-        return ((GetServicePrincipalByAppPrincipalIdResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginGetServicePrincipalByAppPrincipalId(GetServicePrincipalByAppPrincipalIdRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("GetServicePrincipalByAppPrincipalId", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public GetServicePrincipalByAppPrincipalIdResponse EndGetServicePrincipalByAppPrincipalId(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((GetServicePrincipalByAppPrincipalIdResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void GetServicePrincipalByAppPrincipalIdAsync(GetServicePrincipalByAppPrincipalIdRequest request) {
-        this.GetServicePrincipalByAppPrincipalIdAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void GetServicePrincipalByAppPrincipalIdAsync(GetServicePrincipalByAppPrincipalIdRequest request, object userState) {
-        if ((this.GetServicePrincipalByAppPrincipalIdOperationCompleted == null)) {
-            this.GetServicePrincipalByAppPrincipalIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetServicePrincipalByAppPrincipalIdOperationCompleted);
-        }
-        this.InvokeAsync("GetServicePrincipalByAppPrincipalId", new object[] {
-                    request}, this.GetServicePrincipalByAppPrincipalIdOperationCompleted, userState);
-    }
-    
-    private void OnGetServicePrincipalByAppPrincipalIdOperationCompleted(object arg) {
-        if ((this.GetServicePrincipalByAppPrincipalIdCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.GetServicePrincipalByAppPrincipalIdCompleted(this, new GetServicePrincipalByAppPrincipalIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
+    public event NavigateGroupMemberResultsCompletedEventHandler NavigateGroupMemberResultsCompleted;
     
     /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServicePrincip" +
@@ -1126,49 +934,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
         if ((this.ListServicePrincipalCredentialsBySpnCompleted != null)) {
             System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
             this.ListServicePrincipalCredentialsBySpnCompleted(this, new ListServicePrincipalCredentialsBySpnCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/NavigateGroupMemb" +
-        "erResults", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public NavigateGroupMemberResultsResponse NavigateGroupMemberResults([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] NavigateGroupMemberResultsRequest request) {
-        object[] results = this.Invoke("NavigateGroupMemberResults", new object[] {
-                    request});
-        return ((NavigateGroupMemberResultsResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginNavigateGroupMemberResults(NavigateGroupMemberResultsRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("NavigateGroupMemberResults", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public NavigateGroupMemberResultsResponse EndNavigateGroupMemberResults(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((NavigateGroupMemberResultsResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void NavigateGroupMemberResultsAsync(NavigateGroupMemberResultsRequest request) {
-        this.NavigateGroupMemberResultsAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void NavigateGroupMemberResultsAsync(NavigateGroupMemberResultsRequest request, object userState) {
-        if ((this.NavigateGroupMemberResultsOperationCompleted == null)) {
-            this.NavigateGroupMemberResultsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnNavigateGroupMemberResultsOperationCompleted);
-        }
-        this.InvokeAsync("NavigateGroupMemberResults", new object[] {
-                    request}, this.NavigateGroupMemberResultsOperationCompleted, userState);
-    }
-    
-    private void OnNavigateGroupMemberResultsOperationCompleted(object arg) {
-        if ((this.NavigateGroupMemberResultsCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.NavigateGroupMemberResultsCompleted(this, new NavigateGroupMemberResultsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
         }
     }
     
@@ -2277,49 +2042,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     }
     
     /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/ListUsersByStrong" +
-        "Authentication", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public ListUsersByStrongAuthenticationResponse ListUsersByStrongAuthentication([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ListUsersByStrongAuthenticationRequest request) {
-        object[] results = this.Invoke("ListUsersByStrongAuthentication", new object[] {
-                    request});
-        return ((ListUsersByStrongAuthenticationResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginListUsersByStrongAuthentication(ListUsersByStrongAuthenticationRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("ListUsersByStrongAuthentication", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public ListUsersByStrongAuthenticationResponse EndListUsersByStrongAuthentication(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((ListUsersByStrongAuthenticationResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void ListUsersByStrongAuthenticationAsync(ListUsersByStrongAuthenticationRequest request) {
-        this.ListUsersByStrongAuthenticationAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void ListUsersByStrongAuthenticationAsync(ListUsersByStrongAuthenticationRequest request, object userState) {
-        if ((this.ListUsersByStrongAuthenticationOperationCompleted == null)) {
-            this.ListUsersByStrongAuthenticationOperationCompleted = new System.Threading.SendOrPostCallback(this.OnListUsersByStrongAuthenticationOperationCompleted);
-        }
-        this.InvokeAsync("ListUsersByStrongAuthentication", new object[] {
-                    request}, this.ListUsersByStrongAuthenticationOperationCompleted, userState);
-    }
-    
-    private void OnListUsersByStrongAuthenticationOperationCompleted(object arg) {
-        if ((this.ListUsersByStrongAuthenticationCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.ListUsersByStrongAuthenticationCompleted(this, new ListUsersByStrongAuthenticationCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/NavigateUserResul" +
         "ts", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
     [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
@@ -2618,92 +2340,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     }
     
     /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/ResetStrongAuthen" +
-        "ticationMethodByUpn", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public Response ResetStrongAuthenticationMethodByUpn([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ResetStrongAuthenticationMethodByUpnRequest request) {
-        object[] results = this.Invoke("ResetStrongAuthenticationMethodByUpn", new object[] {
-                    request});
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginResetStrongAuthenticationMethodByUpn(ResetStrongAuthenticationMethodByUpnRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("ResetStrongAuthenticationMethodByUpn", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public Response EndResetStrongAuthenticationMethodByUpn(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void ResetStrongAuthenticationMethodByUpnAsync(ResetStrongAuthenticationMethodByUpnRequest request) {
-        this.ResetStrongAuthenticationMethodByUpnAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void ResetStrongAuthenticationMethodByUpnAsync(ResetStrongAuthenticationMethodByUpnRequest request, object userState) {
-        if ((this.ResetStrongAuthenticationMethodByUpnOperationCompleted == null)) {
-            this.ResetStrongAuthenticationMethodByUpnOperationCompleted = new System.Threading.SendOrPostCallback(this.OnResetStrongAuthenticationMethodByUpnOperationCompleted);
-        }
-        this.InvokeAsync("ResetStrongAuthenticationMethodByUpn", new object[] {
-                    request}, this.ResetStrongAuthenticationMethodByUpnOperationCompleted, userState);
-    }
-    
-    private void OnResetStrongAuthenticationMethodByUpnOperationCompleted(object arg) {
-        if ((this.ResetStrongAuthenticationMethodByUpnCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.ResetStrongAuthenticationMethodByUpnCompleted(this, new ResetStrongAuthenticationMethodByUpnCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/DeleteApplication" +
-        "Password", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public Response DeleteApplicationPassword([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] DeleteApplicationPasswordRequest request) {
-        object[] results = this.Invoke("DeleteApplicationPassword", new object[] {
-                    request});
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginDeleteApplicationPassword(DeleteApplicationPasswordRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("DeleteApplicationPassword", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public Response EndDeleteApplicationPassword(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void DeleteApplicationPasswordAsync(DeleteApplicationPasswordRequest request) {
-        this.DeleteApplicationPasswordAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void DeleteApplicationPasswordAsync(DeleteApplicationPasswordRequest request, object userState) {
-        if ((this.DeleteApplicationPasswordOperationCompleted == null)) {
-            this.DeleteApplicationPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteApplicationPasswordOperationCompleted);
-        }
-        this.InvokeAsync("DeleteApplicationPassword", new object[] {
-                    request}, this.DeleteApplicationPasswordOperationCompleted, userState);
-    }
-    
-    private void OnDeleteApplicationPasswordOperationCompleted(object arg) {
-        if ((this.DeleteApplicationPasswordCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.DeleteApplicationPasswordCompleted(this, new DeleteApplicationPasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/AddServicePrincip" +
         "al", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
     [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
@@ -2919,6 +2555,178 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     }
     
     /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/RemoveServicePrin" +
+        "cipalByAppPrincipalId", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public Response RemoveServicePrincipalByAppPrincipalId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] RemoveServicePrincipalByAppPrincipalIdRequest request) {
+        object[] results = this.Invoke("RemoveServicePrincipalByAppPrincipalId", new object[] {
+                    request});
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginRemoveServicePrincipalByAppPrincipalId(RemoveServicePrincipalByAppPrincipalIdRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("RemoveServicePrincipalByAppPrincipalId", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public Response EndRemoveServicePrincipalByAppPrincipalId(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void RemoveServicePrincipalByAppPrincipalIdAsync(RemoveServicePrincipalByAppPrincipalIdRequest request) {
+        this.RemoveServicePrincipalByAppPrincipalIdAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void RemoveServicePrincipalByAppPrincipalIdAsync(RemoveServicePrincipalByAppPrincipalIdRequest request, object userState) {
+        if ((this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted == null)) {
+            this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveServicePrincipalByAppPrincipalIdOperationCompleted);
+        }
+        this.InvokeAsync("RemoveServicePrincipalByAppPrincipalId", new object[] {
+                    request}, this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted, userState);
+    }
+    
+    private void OnRemoveServicePrincipalByAppPrincipalIdOperationCompleted(object arg) {
+        if ((this.RemoveServicePrincipalByAppPrincipalIdCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.RemoveServicePrincipalByAppPrincipalIdCompleted(this, new RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/RemoveServicePrin" +
+        "cipalBySpn", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public Response RemoveServicePrincipalBySpn([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] RemoveServicePrincipalBySpnRequest request) {
+        object[] results = this.Invoke("RemoveServicePrincipalBySpn", new object[] {
+                    request});
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginRemoveServicePrincipalBySpn(RemoveServicePrincipalBySpnRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("RemoveServicePrincipalBySpn", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public Response EndRemoveServicePrincipalBySpn(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void RemoveServicePrincipalBySpnAsync(RemoveServicePrincipalBySpnRequest request) {
+        this.RemoveServicePrincipalBySpnAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void RemoveServicePrincipalBySpnAsync(RemoveServicePrincipalBySpnRequest request, object userState) {
+        if ((this.RemoveServicePrincipalBySpnOperationCompleted == null)) {
+            this.RemoveServicePrincipalBySpnOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveServicePrincipalBySpnOperationCompleted);
+        }
+        this.InvokeAsync("RemoveServicePrincipalBySpn", new object[] {
+                    request}, this.RemoveServicePrincipalBySpnOperationCompleted, userState);
+    }
+    
+    private void OnRemoveServicePrincipalBySpnOperationCompleted(object arg) {
+        if ((this.RemoveServicePrincipalBySpnCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.RemoveServicePrincipalBySpnCompleted(this, new RemoveServicePrincipalBySpnCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServicePrincip" +
+        "al", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public GetServicePrincipalResponse GetServicePrincipal([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] GetServicePrincipalRequest request) {
+        object[] results = this.Invoke("GetServicePrincipal", new object[] {
+                    request});
+        return ((GetServicePrincipalResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginGetServicePrincipal(GetServicePrincipalRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("GetServicePrincipal", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public GetServicePrincipalResponse EndGetServicePrincipal(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((GetServicePrincipalResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void GetServicePrincipalAsync(GetServicePrincipalRequest request) {
+        this.GetServicePrincipalAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void GetServicePrincipalAsync(GetServicePrincipalRequest request, object userState) {
+        if ((this.GetServicePrincipalOperationCompleted == null)) {
+            this.GetServicePrincipalOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetServicePrincipalOperationCompleted);
+        }
+        this.InvokeAsync("GetServicePrincipal", new object[] {
+                    request}, this.GetServicePrincipalOperationCompleted, userState);
+    }
+    
+    private void OnGetServicePrincipalOperationCompleted(object arg) {
+        if ((this.GetServicePrincipalCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.GetServicePrincipalCompleted(this, new GetServicePrincipalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServicePrincip" +
+        "alByAppPrincipalId", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public GetServicePrincipalByAppPrincipalIdResponse GetServicePrincipalByAppPrincipalId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] GetServicePrincipalByAppPrincipalIdRequest request) {
+        object[] results = this.Invoke("GetServicePrincipalByAppPrincipalId", new object[] {
+                    request});
+        return ((GetServicePrincipalByAppPrincipalIdResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginGetServicePrincipalByAppPrincipalId(GetServicePrincipalByAppPrincipalIdRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("GetServicePrincipalByAppPrincipalId", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public GetServicePrincipalByAppPrincipalIdResponse EndGetServicePrincipalByAppPrincipalId(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((GetServicePrincipalByAppPrincipalIdResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void GetServicePrincipalByAppPrincipalIdAsync(GetServicePrincipalByAppPrincipalIdRequest request) {
+        this.GetServicePrincipalByAppPrincipalIdAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void GetServicePrincipalByAppPrincipalIdAsync(GetServicePrincipalByAppPrincipalIdRequest request, object userState) {
+        if ((this.GetServicePrincipalByAppPrincipalIdOperationCompleted == null)) {
+            this.GetServicePrincipalByAppPrincipalIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetServicePrincipalByAppPrincipalIdOperationCompleted);
+        }
+        this.InvokeAsync("GetServicePrincipalByAppPrincipalId", new object[] {
+                    request}, this.GetServicePrincipalByAppPrincipalIdOperationCompleted, userState);
+    }
+    
+    private void OnGetServicePrincipalByAppPrincipalIdOperationCompleted(object arg) {
+        if ((this.GetServicePrincipalByAppPrincipalIdCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.GetServicePrincipalByAppPrincipalIdCompleted(this, new GetServicePrincipalByAppPrincipalIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetHeaderInfo", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
     [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public GetHeaderInfoResponse GetHeaderInfo([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Request request) {
@@ -2957,44 +2765,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
         if ((this.GetHeaderInfoCompleted != null)) {
             System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
             this.GetHeaderInfoCompleted(this, new GetHeaderInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServiceStatus", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    public HttpStatusCode GetServiceStatus() {
-        object[] results = this.Invoke("GetServiceStatus", new object[0]);
-        return ((HttpStatusCode)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginGetServiceStatus(System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("GetServiceStatus", new object[0], callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public HttpStatusCode EndGetServiceStatus(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((HttpStatusCode)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void GetServiceStatusAsync() {
-        this.GetServiceStatusAsync(null);
-    }
-    
-    /// <remarks/>
-    public void GetServiceStatusAsync(object userState) {
-        if ((this.GetServiceStatusOperationCompleted == null)) {
-            this.GetServiceStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetServiceStatusOperationCompleted);
-        }
-        this.InvokeAsync("GetServiceStatus", new object[0], this.GetServiceStatusOperationCompleted, userState);
-    }
-    
-    private void OnGetServiceStatusOperationCompleted(object arg) {
-        if ((this.GetServiceStatusCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.GetServiceStatusCompleted(this, new GetServiceStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
         }
     }
     
@@ -4700,6 +4470,49 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     }
     
     /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/NavigateGroupMemb" +
+        "erResults", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public NavigateGroupMemberResultsResponse NavigateGroupMemberResults([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] NavigateGroupMemberResultsRequest request) {
+        object[] results = this.Invoke("NavigateGroupMemberResults", new object[] {
+                    request});
+        return ((NavigateGroupMemberResultsResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginNavigateGroupMemberResults(NavigateGroupMemberResultsRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("NavigateGroupMemberResults", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public NavigateGroupMemberResultsResponse EndNavigateGroupMemberResults(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((NavigateGroupMemberResultsResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void NavigateGroupMemberResultsAsync(NavigateGroupMemberResultsRequest request) {
+        this.NavigateGroupMemberResultsAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void NavigateGroupMemberResultsAsync(NavigateGroupMemberResultsRequest request, object userState) {
+        if ((this.NavigateGroupMemberResultsOperationCompleted == null)) {
+            this.NavigateGroupMemberResultsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnNavigateGroupMemberResultsOperationCompleted);
+        }
+        this.InvokeAsync("NavigateGroupMemberResults", new object[] {
+                    request}, this.NavigateGroupMemberResultsOperationCompleted, userState);
+    }
+    
+    private void OnNavigateGroupMemberResultsOperationCompleted(object arg) {
+        if ((this.NavigateGroupMemberResultsCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.NavigateGroupMemberResultsCompleted(this, new NavigateGroupMemberResultsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
     public new void CancelAsync(object userState) {
         base.CancelAsync(userState);
     }
@@ -4712,17 +4525,18 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration.WebServic" +
     "e")]
-public partial class RemoveServicePrincipalByAppPrincipalIdRequest : Request {
+public partial class GetServicePrincipalBySpnRequest : Request {
     
-    private string appPrincipalIdField;
+    private string servicePrincipalNameField;
     
     /// <remarks/>
-    public string AppPrincipalId {
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+    public string ServicePrincipalName {
         get {
-            return this.appPrincipalIdField;
+            return this.servicePrincipalNameField;
         }
         set {
-            this.appPrincipalIdField = value;
+            this.servicePrincipalNameField = value;
         }
     }
 }
@@ -4836,6 +4650,7 @@ public partial class Request {
     private string verifiedDomainField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public Version BecVersion {
         get {
             return this.becVersionField;
@@ -4857,7 +4672,7 @@ public partial class Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string TenantId {
         get {
             return this.tenantIdField;
@@ -4868,7 +4683,7 @@ public partial class Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string VerifiedDomain {
         get {
             return this.verifiedDomainField;
@@ -4958,7 +4773,7 @@ public partial class DomainDnsRecord {
     private bool ttlFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<DomainCapabilities> Capability {
         get {
             return this.capabilityField;
@@ -4980,7 +4795,7 @@ public partial class DomainDnsRecord {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> IsOptional {
         get {
             return this.isOptionalField;
@@ -5002,7 +4817,7 @@ public partial class DomainDnsRecord {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string Label {
         get {
             return this.labelField;
@@ -5013,7 +4828,7 @@ public partial class DomainDnsRecord {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -5024,7 +4839,7 @@ public partial class DomainDnsRecord {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public System.Nullable<int> Ttl {
         get {
             return this.ttlField;
@@ -5095,7 +4910,7 @@ public partial class DomainDnsCnameRecord : DomainDnsRecord {
     private string canonicalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string CanonicalName {
         get {
             return this.canonicalNameField;
@@ -5119,6 +4934,7 @@ public partial class DomainDnsNullRecord : DomainDnsRecord {
     private bool errorFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public DomainDnsRecordError Error {
         get {
             return this.errorField;
@@ -5180,7 +4996,7 @@ public partial class DomainDnsSrvRecord : DomainDnsRecord {
     private bool weightFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string NameTarget {
         get {
             return this.nameTargetField;
@@ -5191,7 +5007,7 @@ public partial class DomainDnsSrvRecord : DomainDnsRecord {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<int> Port {
         get {
             return this.portField;
@@ -5213,7 +5029,7 @@ public partial class DomainDnsSrvRecord : DomainDnsRecord {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public System.Nullable<int> Priority {
         get {
             return this.priorityField;
@@ -5235,7 +5051,7 @@ public partial class DomainDnsSrvRecord : DomainDnsRecord {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string Protocol {
         get {
             return this.protocolField;
@@ -5246,7 +5062,7 @@ public partial class DomainDnsSrvRecord : DomainDnsRecord {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string Service {
         get {
             return this.serviceField;
@@ -5257,7 +5073,7 @@ public partial class DomainDnsSrvRecord : DomainDnsRecord {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public System.Nullable<int> Weight {
         get {
             return this.weightField;
@@ -5294,7 +5110,7 @@ public partial class DomainDnsMXRecord : DomainDnsRecord {
     private bool preferenceFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string MailExchange {
         get {
             return this.mailExchangeField;
@@ -5305,7 +5121,7 @@ public partial class DomainDnsMXRecord : DomainDnsRecord {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<int> Preference {
         get {
             return this.preferenceField;
@@ -5338,7 +5154,7 @@ public partial class DomainDnsTxtRecord : DomainDnsRecord {
     private string textField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string Text {
         get {
             return this.textField;
@@ -5396,7 +5212,7 @@ public partial class AccountSkuDetails {
     private bool warningUnitsFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string AccountName {
         get {
             return this.accountNameField;
@@ -5407,6 +5223,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public string AccountObjectId {
         get {
             return this.accountObjectIdField;
@@ -5417,7 +5234,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string AccountSkuId {
         get {
             return this.accountSkuIdField;
@@ -5428,6 +5245,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
     public int ActiveUnits {
         get {
             return this.activeUnitsField;
@@ -5449,6 +5267,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
     public int ConsumedUnits {
         get {
             return this.consumedUnitsField;
@@ -5470,6 +5289,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=5)]
     public int LockedOutUnits {
         get {
             return this.lockedOutUnitsField;
@@ -5491,7 +5311,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=6)]
     public ServiceStatus[] ServiceStatus {
         get {
             return this.serviceStatusField;
@@ -5502,6 +5322,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=7)]
     public string SkuId {
         get {
             return this.skuIdField;
@@ -5512,7 +5333,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
     public string SkuPartNumber {
         get {
             return this.skuPartNumberField;
@@ -5523,7 +5344,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=9)]
     [System.Xml.Serialization.XmlArrayItemAttribute("guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
     public string[] SubscriptionIds {
         get {
@@ -5535,6 +5356,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=10)]
     public int SuspendedUnits {
         get {
             return this.suspendedUnitsField;
@@ -5556,6 +5378,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=11)]
     public SkuTargetClass TargetClass {
         get {
             return this.targetClassField;
@@ -5577,6 +5400,7 @@ public partial class AccountSkuDetails {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=12)]
     public int WarningUnits {
         get {
             return this.warningUnitsField;
@@ -5613,6 +5437,7 @@ public partial class ServiceStatus {
     private ServicePlan servicePlanField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public ProvisioningStatus ProvisioningStatus {
         get {
             return this.provisioningStatusField;
@@ -5634,7 +5459,7 @@ public partial class ServiceStatus {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public ServicePlan ServicePlan {
         get {
             return this.servicePlanField;
@@ -5686,7 +5511,7 @@ public partial class ServicePlan {
     private bool targetClassFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string ServiceName {
         get {
             return this.serviceNameField;
@@ -5697,7 +5522,7 @@ public partial class ServicePlan {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string ServicePlanId {
         get {
             return this.servicePlanIdField;
@@ -5708,7 +5533,7 @@ public partial class ServicePlan {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string ServiceType {
         get {
             return this.serviceTypeField;
@@ -5719,6 +5544,7 @@ public partial class ServicePlan {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
     public SkuTargetClass TargetClass {
         get {
             return this.targetClassField;
@@ -5791,7 +5617,7 @@ public partial class Subscription {
     private bool totalLicensesFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<System.DateTime> DateCreated {
         get {
             return this.dateCreatedField;
@@ -5813,7 +5639,7 @@ public partial class Subscription {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<System.DateTime> NextLifecycleDate {
         get {
             return this.nextLifecycleDateField;
@@ -5835,7 +5661,7 @@ public partial class Subscription {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -5846,7 +5672,7 @@ public partial class Subscription {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string OcpSubscriptionId {
         get {
             return this.ocpSubscriptionIdField;
@@ -5857,7 +5683,7 @@ public partial class Subscription {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=4)]
     public ServiceStatus[] ServiceStatus {
         get {
             return this.serviceStatusField;
@@ -5868,7 +5694,7 @@ public partial class Subscription {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public string SkuId {
         get {
             return this.skuIdField;
@@ -5879,7 +5705,7 @@ public partial class Subscription {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public string SkuPartNumber {
         get {
             return this.skuPartNumberField;
@@ -5890,6 +5716,7 @@ public partial class Subscription {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=7)]
     public SubscriptionStatus Status {
         get {
             return this.statusField;
@@ -5911,6 +5738,7 @@ public partial class Subscription {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=8)]
     public int TotalLicenses {
         get {
             return this.totalLicensesField;
@@ -5970,7 +5798,7 @@ public partial class ServiceEndpoint {
     private string nameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string Address {
         get {
             return this.addressField;
@@ -5981,7 +5809,7 @@ public partial class ServiceEndpoint {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string Name {
         get {
             return this.nameField;
@@ -6005,7 +5833,7 @@ public partial class ServiceInstanceInformation {
     private ServiceEndpoint[] serviceInstanceEndpointsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string ServiceInstance {
         get {
             return this.serviceInstanceField;
@@ -6016,7 +5844,7 @@ public partial class ServiceInstanceInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     public ServiceEndpoint[] ServiceInstanceEndpoints {
         get {
             return this.serviceInstanceEndpointsField;
@@ -6040,7 +5868,7 @@ public partial class ServiceInformation {
     private string serviceInstanceField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute("XElement", Namespace="http://schemas.datacontract.org/2004/07/System.Xml.Linq")]
     public System.Xml.XmlElement[] ServiceElements {
         get {
@@ -6052,7 +5880,7 @@ public partial class ServiceInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string ServiceInstance {
         get {
             return this.serviceInstanceField;
@@ -6140,7 +5968,7 @@ public partial class CompanyInformation {
     private bool usersPermissionToCreateGroupsEnabledFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] AuthorizedServiceInstances {
         get {
@@ -6152,7 +5980,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     public AuthorizedService[] AuthorizedServices {
         get {
             return this.authorizedServicesField;
@@ -6163,7 +5991,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string City {
         get {
             return this.cityField;
@@ -6174,7 +6002,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=3)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] CompanyTags {
         get {
@@ -6186,6 +6014,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
     public CompanyType CompanyType {
         get {
             return this.companyTypeField;
@@ -6207,7 +6036,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public string Country {
         get {
             return this.countryField;
@@ -6218,7 +6047,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public string CountryLetterCode {
         get {
             return this.countryLetterCodeField;
@@ -6229,7 +6058,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
     public System.Nullable<bool> DapEnabled {
         get {
             return this.dapEnabledField;
@@ -6251,7 +6080,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
     public System.Nullable<bool> DirectorySynchronizationEnabled {
         get {
             return this.directorySynchronizationEnabledField;
@@ -6273,6 +6102,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=9)]
     public DirSyncStatus DirectorySynchronizationStatus {
         get {
             return this.directorySynchronizationStatusField;
@@ -6294,7 +6124,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=10)]
     public string DisplayName {
         get {
             return this.displayNameField;
@@ -6305,7 +6135,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=11)]
     public string InitialDomain {
         get {
             return this.initialDomainField;
@@ -6316,7 +6146,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=12)]
     public System.Nullable<System.DateTime> LastDirSyncTime {
         get {
             return this.lastDirSyncTimeField;
@@ -6338,7 +6168,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=13)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] MarketingNotificationEmails {
         get {
@@ -6350,7 +6180,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=14)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -6361,7 +6191,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=15)]
     public System.Xml.XmlElement PortalSettings {
         get {
             return this.portalSettingsField;
@@ -6372,7 +6202,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=16)]
     public string PostalCode {
         get {
             return this.postalCodeField;
@@ -6383,7 +6213,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=17)]
     public string PreferredLanguage {
         get {
             return this.preferredLanguageField;
@@ -6394,6 +6224,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=18)]
     public bool SelfServePasswordResetEnabled {
         get {
             return this.selfServePasswordResetEnabledField;
@@ -6415,7 +6246,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=19)]
     public ServiceInformation[] ServiceInformation {
         get {
             return this.serviceInformationField;
@@ -6426,7 +6257,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=20)]
     public ServiceInstanceInformation[] ServiceInstanceInformation {
         get {
             return this.serviceInstanceInformationField;
@@ -6437,7 +6268,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=21)]
     public string State {
         get {
             return this.stateField;
@@ -6448,7 +6279,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=22)]
     public string Street {
         get {
             return this.streetField;
@@ -6459,7 +6290,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=23)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] TechnicalNotificationEmails {
         get {
@@ -6471,7 +6302,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=24)]
     public string TelephoneNumber {
         get {
             return this.telephoneNumberField;
@@ -6482,7 +6313,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=25)]
     [System.Xml.Serialization.XmlArrayItemAttribute("KeyValueOfstringstring", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
     public ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] UIExtensibilityUris {
         get {
@@ -6494,6 +6325,7 @@ public partial class CompanyInformation {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=26)]
     public bool UsersPermissionToCreateGroupsEnabled {
         get {
             return this.usersPermissionToCreateGroupsEnabledField;
@@ -6582,7 +6414,7 @@ public partial class ArrayOfKeyValueOfstringstringKeyValueOfstringstring {
     private string valueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string Key {
         get {
             return this.keyField;
@@ -6593,7 +6425,7 @@ public partial class ArrayOfKeyValueOfstringstringKeyValueOfstringstring {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string Value {
         get {
             return this.valueField;
@@ -6616,6 +6448,7 @@ public partial class TrackingHeader {
     private string correlationIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string CorrelationId {
         get {
             return this.correlationIdField;
@@ -6638,7 +6471,7 @@ public partial class UserIdentityHeader {
     private string liveTokenField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string LiveToken {
         get {
             return this.liveTokenField;
@@ -6663,6 +6496,7 @@ public partial class ContractVersionHeader {
     private bool becVersionFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public Version BecVersion {
         get {
             return this.becVersionField;
@@ -6696,7 +6530,7 @@ public partial class Context {
     private byte[] dataBlobField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=0)]
     public byte[] DataBlob {
         get {
             return this.dataBlobField;
@@ -6721,6 +6555,7 @@ public partial class ClientVersionHeader {
     private string versionField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ClientId {
         get {
             return this.clientIdField;
@@ -6731,7 +6566,7 @@ public partial class ClientVersionHeader {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string Version {
         get {
             return this.versionField;
@@ -6765,7 +6600,7 @@ public partial class Role {
     private string objectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string Description {
         get {
             return this.descriptionField;
@@ -6776,7 +6611,7 @@ public partial class Role {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> IsEnabled {
         get {
             return this.isEnabledField;
@@ -6798,7 +6633,7 @@ public partial class Role {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public System.Nullable<bool> IsSystem {
         get {
             return this.isSystemField;
@@ -6820,7 +6655,7 @@ public partial class Role {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string Name {
         get {
             return this.nameField;
@@ -6831,7 +6666,7 @@ public partial class Role {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -6897,7 +6732,7 @@ public partial class Contact {
     private bool validationStatusFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string City {
         get {
             return this.cityField;
@@ -6908,7 +6743,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string CompanyName {
         get {
             return this.companyNameField;
@@ -6919,7 +6754,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string Country {
         get {
             return this.countryField;
@@ -6930,7 +6765,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string Department {
         get {
             return this.departmentField;
@@ -6941,7 +6776,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string DisplayName {
         get {
             return this.displayNameField;
@@ -6952,7 +6787,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public string EmailAddress {
         get {
             return this.emailAddressField;
@@ -6963,7 +6798,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=6)]
     public ValidationError[] Errors {
         get {
             return this.errorsField;
@@ -6974,7 +6809,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
     public string Fax {
         get {
             return this.faxField;
@@ -6985,7 +6820,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
     public string FirstName {
         get {
             return this.firstNameField;
@@ -6996,7 +6831,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=9)]
     public System.Nullable<System.DateTime> LastDirSyncTime {
         get {
             return this.lastDirSyncTimeField;
@@ -7018,7 +6853,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=10)]
     public string LastName {
         get {
             return this.lastNameField;
@@ -7029,7 +6864,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=11)]
     public string MobilePhone {
         get {
             return this.mobilePhoneField;
@@ -7040,7 +6875,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=12)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -7051,7 +6886,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=13)]
     public string Office {
         get {
             return this.officeField;
@@ -7062,7 +6897,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=14)]
     public string PhoneNumber {
         get {
             return this.phoneNumberField;
@@ -7073,7 +6908,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=15)]
     public string PostalCode {
         get {
             return this.postalCodeField;
@@ -7084,7 +6919,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=16)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] ProxyAddresses {
         get {
@@ -7096,7 +6931,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=17)]
     public string State {
         get {
             return this.stateField;
@@ -7107,7 +6942,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=18)]
     public string StreetAddress {
         get {
             return this.streetAddressField;
@@ -7118,7 +6953,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=19)]
     public string Title {
         get {
             return this.titleField;
@@ -7129,7 +6964,7 @@ public partial class Contact {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=20)]
     public System.Nullable<ValidationStatus> ValidationStatus {
         get {
             return this.validationStatusField;
@@ -7172,7 +7007,7 @@ public partial class ValidationError {
     private bool timestampFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Xml.XmlElement ErrorDetail {
         get {
             return this.errorDetailField;
@@ -7183,6 +7018,7 @@ public partial class ValidationError {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public bool Resolved {
         get {
             return this.resolvedField;
@@ -7204,7 +7040,7 @@ public partial class ValidationError {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string ServiceInstance {
         get {
             return this.serviceInstanceField;
@@ -7215,6 +7051,7 @@ public partial class ValidationError {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
     public System.DateTime Timestamp {
         get {
             return this.timestampField;
@@ -7269,7 +7106,7 @@ public partial class PartnerContract {
     private string tenantIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string Name {
         get {
             return this.nameField;
@@ -7280,6 +7117,7 @@ public partial class PartnerContract {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -7290,6 +7128,7 @@ public partial class PartnerContract {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public string PartnerContext {
         get {
             return this.partnerContextField;
@@ -7300,6 +7139,7 @@ public partial class PartnerContract {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
     public string TenantId {
         get {
             return this.tenantIdField;
@@ -7336,6 +7176,7 @@ public partial class ListResults {
     private byte[] listContextField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public bool IsFirstPage {
         get {
             return this.isFirstPageField;
@@ -7357,6 +7198,7 @@ public partial class ListResults {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public bool IsLastPage {
         get {
             return this.isLastPageField;
@@ -7378,7 +7220,7 @@ public partial class ListResults {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=2)]
     public byte[] ListContext {
         get {
             return this.listContextField;
@@ -7400,7 +7242,7 @@ public partial class ListGroupResults : ListResults {
     private Group[] resultsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     public Group[] Results {
         get {
             return this.resultsField;
@@ -7452,7 +7294,7 @@ public partial class Group {
     private bool validationStatusFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string CommonName {
         get {
             return this.commonNameField;
@@ -7463,7 +7305,7 @@ public partial class Group {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string Description {
         get {
             return this.descriptionField;
@@ -7474,7 +7316,7 @@ public partial class Group {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string DisplayName {
         get {
             return this.displayNameField;
@@ -7485,7 +7327,7 @@ public partial class Group {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string EmailAddress {
         get {
             return this.emailAddressField;
@@ -7496,7 +7338,7 @@ public partial class Group {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=4)]
     public ValidationError[] Errors {
         get {
             return this.errorsField;
@@ -7507,7 +7349,7 @@ public partial class Group {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public System.Nullable<GroupType> GroupType {
         get {
             return this.groupTypeField;
@@ -7529,7 +7371,7 @@ public partial class Group {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public System.Nullable<bool> IsSystem {
         get {
             return this.isSystemField;
@@ -7551,7 +7393,7 @@ public partial class Group {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
     public System.Nullable<System.DateTime> LastDirSyncTime {
         get {
             return this.lastDirSyncTimeField;
@@ -7573,7 +7415,7 @@ public partial class Group {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
     public string ManagedBy {
         get {
             return this.managedByField;
@@ -7584,7 +7426,7 @@ public partial class Group {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=9)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -7595,7 +7437,7 @@ public partial class Group {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=10)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] ProxyAddresses {
         get {
@@ -7607,7 +7449,7 @@ public partial class Group {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=11)]
     public System.Nullable<ValidationStatus> ValidationStatus {
         get {
             return this.validationStatusField;
@@ -7656,7 +7498,7 @@ public partial class ListContactResults : ListResults {
     private Contact[] resultsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     public Contact[] Results {
         get {
             return this.resultsField;
@@ -7678,7 +7520,7 @@ public partial class ListPartnerContractResults : ListResults {
     private PartnerContract[] resultsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     public PartnerContract[] Results {
         get {
             return this.resultsField;
@@ -7700,7 +7542,7 @@ public partial class ListUserResults : ListResults {
     private User[] resultsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     public User[] Results {
         get {
             return this.resultsField;
@@ -7845,7 +7687,7 @@ public partial class User {
     private bool validationStatusFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] AlternateEmailAddresses {
         get {
@@ -7857,7 +7699,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] AlternateMobilePhones {
         get {
@@ -7869,7 +7711,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=2)]
     public AlternativeSecurityId[] AlternativeSecurityIds {
         get {
             return this.alternativeSecurityIdsField;
@@ -7880,7 +7722,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public System.Nullable<bool> BlockCredential {
         get {
             return this.blockCredentialField;
@@ -7902,7 +7744,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string City {
         get {
             return this.cityField;
@@ -7913,7 +7755,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public System.Nullable<int> CloudExchangeRecipientDisplayType {
         get {
             return this.cloudExchangeRecipientDisplayTypeField;
@@ -7935,7 +7777,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public string Country {
         get {
             return this.countryField;
@@ -7946,7 +7788,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
     public string Department {
         get {
             return this.departmentField;
@@ -7957,7 +7799,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
     public string DisplayName {
         get {
             return this.displayNameField;
@@ -7968,7 +7810,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=9)]
     public ValidationError[] Errors {
         get {
             return this.errorsField;
@@ -7979,7 +7821,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=10)]
     public string Fax {
         get {
             return this.faxField;
@@ -7990,7 +7832,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=11)]
     public string FirstName {
         get {
             return this.firstNameField;
@@ -8001,7 +7843,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=12)]
     public string ImmutableId {
         get {
             return this.immutableIdField;
@@ -8012,7 +7854,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=13)]
     public System.Nullable<bool> IsBlackberryUser {
         get {
             return this.isBlackberryUserField;
@@ -8034,7 +7876,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=14)]
     public System.Nullable<bool> IsLicensed {
         get {
             return this.isLicensedField;
@@ -8056,7 +7898,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=15)]
     public System.Nullable<System.DateTime> LastDirSyncTime {
         get {
             return this.lastDirSyncTimeField;
@@ -8078,7 +7920,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=16)]
     public string LastName {
         get {
             return this.lastNameField;
@@ -8089,7 +7931,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=17)]
     public System.Nullable<bool> LicenseReconciliationNeeded {
         get {
             return this.licenseReconciliationNeededField;
@@ -8111,7 +7953,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=18)]
     public UserLicense[] Licenses {
         get {
             return this.licensesField;
@@ -8122,7 +7964,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=19)]
     public string LiveId {
         get {
             return this.liveIdField;
@@ -8133,7 +7975,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=20)]
     public string MobilePhone {
         get {
             return this.mobilePhoneField;
@@ -8144,7 +7986,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=21)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -8155,7 +7997,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=22)]
     public string Office {
         get {
             return this.officeField;
@@ -8166,6 +8008,7 @@ public partial class User {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=23)]
     public ProvisioningStatus OverallProvisioningStatus {
         get {
             return this.overallProvisioningStatusField;
@@ -8187,7 +8030,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=24)]
     public System.Nullable<bool> PasswordNeverExpires {
         get {
             return this.passwordNeverExpiresField;
@@ -8209,7 +8052,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=25)]
     public System.Nullable<bool> PasswordResetNotRequiredDuringActivate {
         get {
             return this.passwordResetNotRequiredDuringActivateField;
@@ -8231,7 +8074,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=26)]
     public string PhoneNumber {
         get {
             return this.phoneNumberField;
@@ -8242,7 +8085,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=27)]
     public System.Xml.XmlElement PortalSettings {
         get {
             return this.portalSettingsField;
@@ -8253,7 +8096,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=28)]
     public string PostalCode {
         get {
             return this.postalCodeField;
@@ -8264,7 +8107,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=29)]
     public string PreferredLanguage {
         get {
             return this.preferredLanguageField;
@@ -8275,7 +8118,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=30)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] ProxyAddresses {
         get {
@@ -8287,7 +8130,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=31)]
     public System.Nullable<System.DateTime> SoftDeletionTimestamp {
         get {
             return this.softDeletionTimestampField;
@@ -8309,7 +8152,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=32)]
     public string State {
         get {
             return this.stateField;
@@ -8320,7 +8163,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=33)]
     public string StreetAddress {
         get {
             return this.streetAddressField;
@@ -8331,7 +8174,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=34)]
     public StrongAuthenticationMethod[] StrongAuthenticationMethods {
         get {
             return this.strongAuthenticationMethodsField;
@@ -8342,7 +8185,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=35)]
     public StrongAuthenticationPhoneAppDetail[] StrongAuthenticationPhoneAppDetails {
         get {
             return this.strongAuthenticationPhoneAppDetailsField;
@@ -8353,7 +8196,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=36)]
     public System.Nullable<long> StrongAuthenticationProofupTime {
         get {
             return this.strongAuthenticationProofupTimeField;
@@ -8375,7 +8218,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=37)]
     public StrongAuthenticationRequirement[] StrongAuthenticationRequirements {
         get {
             return this.strongAuthenticationRequirementsField;
@@ -8386,7 +8229,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=38)]
     public System.Nullable<bool> StrongPasswordRequired {
         get {
             return this.strongPasswordRequiredField;
@@ -8408,7 +8251,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=39)]
     public System.Nullable<System.DateTime> StsRefreshTokensValidFrom {
         get {
             return this.stsRefreshTokensValidFromField;
@@ -8430,7 +8273,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=40)]
     public string Title {
         get {
             return this.titleField;
@@ -8441,7 +8284,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=41)]
     public string UsageLocation {
         get {
             return this.usageLocationField;
@@ -8452,7 +8295,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=42)]
     public string UserLandingPageIdentifierForO365Shell {
         get {
             return this.userLandingPageIdentifierForO365ShellField;
@@ -8463,7 +8306,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=43)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -8474,7 +8317,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=44)]
     public string UserThemeIdentifierForO365Shell {
         get {
             return this.userThemeIdentifierForO365ShellField;
@@ -8485,7 +8328,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=45)]
     public System.Nullable<UserType> UserType {
         get {
             return this.userTypeField;
@@ -8507,7 +8350,7 @@ public partial class User {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=46)]
     public System.Nullable<ValidationStatus> ValidationStatus {
         get {
             return this.validationStatusField;
@@ -8546,7 +8389,7 @@ public partial class AlternativeSecurityId {
     private bool typeFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string IdentityProvider {
         get {
             return this.identityProviderField;
@@ -8557,7 +8400,7 @@ public partial class AlternativeSecurityId {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=1)]
     public byte[] Key {
         get {
             return this.keyField;
@@ -8568,6 +8411,7 @@ public partial class AlternativeSecurityId {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public int Type {
         get {
             return this.typeField;
@@ -8604,7 +8448,7 @@ public partial class UserLicense {
     private ServiceStatus[] serviceStatusField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public AccountSkuIdentifier AccountSku {
         get {
             return this.accountSkuField;
@@ -8615,7 +8459,7 @@ public partial class UserLicense {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string AccountSkuId {
         get {
             return this.accountSkuIdField;
@@ -8626,7 +8470,7 @@ public partial class UserLicense {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=2)]
     public ServiceStatus[] ServiceStatus {
         get {
             return this.serviceStatusField;
@@ -8650,7 +8494,7 @@ public partial class AccountSkuIdentifier {
     private string skuPartNumberField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string AccountName {
         get {
             return this.accountNameField;
@@ -8661,7 +8505,7 @@ public partial class AccountSkuIdentifier {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string SkuPartNumber {
         get {
             return this.skuPartNumberField;
@@ -8687,6 +8531,7 @@ public partial class StrongAuthenticationMethod {
     private string methodTypeField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public bool IsDefault {
         get {
             return this.isDefaultField;
@@ -8708,7 +8553,7 @@ public partial class StrongAuthenticationMethod {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string MethodType {
         get {
             return this.methodTypeField;
@@ -8750,6 +8595,7 @@ public partial class StrongAuthenticationPhoneAppDetail {
     private string phoneAppVersionField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public StrongAuthenticationPhoneAppAuthType AuthenticationType {
         get {
             return this.authenticationTypeField;
@@ -8771,7 +8617,7 @@ public partial class StrongAuthenticationPhoneAppDetail {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string DeviceName {
         get {
             return this.deviceNameField;
@@ -8782,7 +8628,7 @@ public partial class StrongAuthenticationPhoneAppDetail {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string DeviceTag {
         get {
             return this.deviceTagField;
@@ -8793,7 +8639,7 @@ public partial class StrongAuthenticationPhoneAppDetail {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string DeviceToken {
         get {
             return this.deviceTokenField;
@@ -8804,6 +8650,7 @@ public partial class StrongAuthenticationPhoneAppDetail {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
     public StrongAuthenticationPhoneAppNotificationType NotificationType {
         get {
             return this.notificationTypeField;
@@ -8825,7 +8672,7 @@ public partial class StrongAuthenticationPhoneAppDetail {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public string OathSecretKey {
         get {
             return this.oathSecretKeyField;
@@ -8836,6 +8683,7 @@ public partial class StrongAuthenticationPhoneAppDetail {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=6)]
     public int OathTokenTimeDrift {
         get {
             return this.oathTokenTimeDriftField;
@@ -8857,7 +8705,7 @@ public partial class StrongAuthenticationPhoneAppDetail {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
     public string PhoneAppVersion {
         get {
             return this.phoneAppVersionField;
@@ -8923,7 +8771,7 @@ public partial class StrongAuthenticationRequirement {
     private string stateField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string RelyingParty {
         get {
             return this.relyingPartyField;
@@ -8934,7 +8782,7 @@ public partial class StrongAuthenticationRequirement {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string State {
         get {
             return this.stateField;
@@ -8975,7 +8823,7 @@ public partial class UserExtended : User {
     private string passwordField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string Password {
         get {
             return this.passwordField;
@@ -8997,7 +8845,7 @@ public partial class ListRoleMemberResults : ListResults {
     private RoleMember[] resultsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     public RoleMember[] Results {
         get {
             return this.resultsField;
@@ -9045,7 +8893,7 @@ public partial class RoleMember {
     private bool validationStatusFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string DisplayName {
         get {
             return this.displayNameField;
@@ -9056,7 +8904,7 @@ public partial class RoleMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string EmailAddress {
         get {
             return this.emailAddressField;
@@ -9067,7 +8915,7 @@ public partial class RoleMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public System.Nullable<bool> IsLicensed {
         get {
             return this.isLicensedField;
@@ -9089,7 +8937,7 @@ public partial class RoleMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public System.Nullable<System.DateTime> LastDirSyncTime {
         get {
             return this.lastDirSyncTimeField;
@@ -9111,7 +8959,7 @@ public partial class RoleMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -9122,7 +8970,7 @@ public partial class RoleMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public System.Nullable<ProvisioningStatus> OverallProvisioningStatus {
         get {
             return this.overallProvisioningStatusField;
@@ -9144,6 +8992,7 @@ public partial class RoleMember {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=6)]
     public RoleMemberType RoleMemberType {
         get {
             return this.roleMemberTypeField;
@@ -9165,7 +9014,7 @@ public partial class RoleMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=7)]
     public StrongAuthenticationRequirement[] StrongAuthenticationRequirements {
         get {
             return this.strongAuthenticationRequirementsField;
@@ -9176,7 +9025,7 @@ public partial class RoleMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
     public System.Nullable<ValidationStatus> ValidationStatus {
         get {
             return this.validationStatusField;
@@ -9228,7 +9077,7 @@ public partial class ListGroupMemberResults : ListResults {
     private GroupMember[] resultsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     public GroupMember[] Results {
         get {
             return this.resultsField;
@@ -9276,7 +9125,7 @@ public partial class GroupMember {
     private bool validationStatusFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string CommonName {
         get {
             return this.commonNameField;
@@ -9287,7 +9136,7 @@ public partial class GroupMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string DisplayName {
         get {
             return this.displayNameField;
@@ -9298,7 +9147,7 @@ public partial class GroupMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string EmailAddress {
         get {
             return this.emailAddressField;
@@ -9309,6 +9158,7 @@ public partial class GroupMember {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
     public GroupMemberType GroupMemberType {
         get {
             return this.groupMemberTypeField;
@@ -9330,7 +9180,7 @@ public partial class GroupMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public System.Nullable<bool> IsLicensed {
         get {
             return this.isLicensedField;
@@ -9352,7 +9202,7 @@ public partial class GroupMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public System.Nullable<System.DateTime> LastDirSyncTime {
         get {
             return this.lastDirSyncTimeField;
@@ -9374,7 +9224,7 @@ public partial class GroupMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -9385,7 +9235,7 @@ public partial class GroupMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
     public System.Nullable<ProvisioningStatus> OverallProvisioningStatus {
         get {
             return this.overallProvisioningStatusField;
@@ -9407,7 +9257,7 @@ public partial class GroupMember {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
     public System.Nullable<ValidationStatus> ValidationStatus {
         get {
             return this.validationStatusField;
@@ -9462,7 +9312,7 @@ public partial class ListServicePrincipalResults : ListResults {
     private ServicePrincipal[] resultsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     public ServicePrincipal[] Results {
         get {
             return this.resultsField;
@@ -9501,7 +9351,7 @@ public partial class ServicePrincipal {
     private bool trustedForDelegationFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> AccountEnabled {
         get {
             return this.accountEnabledField;
@@ -9523,7 +9373,7 @@ public partial class ServicePrincipal {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     public RedirectUri[] Addresses {
         get {
             return this.addressesField;
@@ -9534,7 +9384,7 @@ public partial class ServicePrincipal {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string AppPrincipalId {
         get {
             return this.appPrincipalIdField;
@@ -9545,7 +9395,7 @@ public partial class ServicePrincipal {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string DisplayName {
         get {
             return this.displayNameField;
@@ -9556,7 +9406,7 @@ public partial class ServicePrincipal {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -9567,7 +9417,7 @@ public partial class ServicePrincipal {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=5)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] ServicePrincipalNames {
         get {
@@ -9579,7 +9429,7 @@ public partial class ServicePrincipal {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public System.Nullable<bool> TrustedForDelegation {
         get {
             return this.trustedForDelegationField;
@@ -9616,7 +9466,7 @@ public partial class RedirectUri {
     private bool addressTypeFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string Address {
         get {
             return this.addressField;
@@ -9627,6 +9477,7 @@ public partial class RedirectUri {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public AddressType AddressType {
         get {
             return this.addressTypeField;
@@ -9690,7 +9541,7 @@ public partial class ServicePrincipalExtended : ServicePrincipal {
     private ServicePrincipalCredential[] credentialsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     public ServicePrincipalCredential[] Credentials {
         get {
             return this.credentialsField;
@@ -9736,7 +9587,7 @@ public partial class ServicePrincipalCredential {
     private string valueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=0)]
     public byte[] ApplicationKeyIdentifier {
         get {
             return this.applicationKeyIdentifierField;
@@ -9747,7 +9598,7 @@ public partial class ServicePrincipalCredential {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<System.DateTime> EndDate {
         get {
             return this.endDateField;
@@ -9769,7 +9620,7 @@ public partial class ServicePrincipalCredential {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string KeyGroupId {
         get {
             return this.keyGroupIdField;
@@ -9780,7 +9631,7 @@ public partial class ServicePrincipalCredential {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string KeyId {
         get {
             return this.keyIdField;
@@ -9791,7 +9642,7 @@ public partial class ServicePrincipalCredential {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=4)]
     public byte[] KeyReference {
         get {
             return this.keyReferenceField;
@@ -9802,7 +9653,7 @@ public partial class ServicePrincipalCredential {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public System.Nullable<System.DateTime> StartDate {
         get {
             return this.startDateField;
@@ -9824,6 +9675,7 @@ public partial class ServicePrincipalCredential {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=6)]
     public ServicePrincipalCredentialType Type {
         get {
             return this.typeField;
@@ -9845,7 +9697,7 @@ public partial class ServicePrincipalCredential {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
     public System.Nullable<ServicePrincipalCredentialUsage> Usage {
         get {
             return this.usageField;
@@ -9867,7 +9719,7 @@ public partial class ServicePrincipalCredential {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
     public string Value {
         get {
             return this.valueField;
@@ -9990,7 +9842,7 @@ public partial class ListGroupMembersResponse : Response {
     private ListGroupMemberResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListGroupMemberResults ReturnValue {
         get {
             return this.returnValueField;
@@ -10013,7 +9865,7 @@ public partial class NavigateGroupResultsResponse : Response {
     private ListGroupResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListGroupResults ReturnValue {
         get {
             return this.returnValueField;
@@ -10036,7 +9888,7 @@ public partial class ListGroupsResponse : Response {
     private ListGroupResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListGroupResults ReturnValue {
         get {
             return this.returnValueField;
@@ -10059,7 +9911,7 @@ public partial class GetGroupResponse : Response {
     private Group returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Group ReturnValue {
         get {
             return this.returnValueField;
@@ -10082,7 +9934,7 @@ public partial class AddWellKnownGroupResponse : Response {
     private Group returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Group ReturnValue {
         get {
             return this.returnValueField;
@@ -10105,7 +9957,7 @@ public partial class AddGroupResponse : Response {
     private Group returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Group ReturnValue {
         get {
             return this.returnValueField;
@@ -10128,7 +9980,7 @@ public partial class GetDomainVerificationDnsResponse : Response {
     private DomainDnsRecord returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public DomainDnsRecord ReturnValue {
         get {
             return this.returnValueField;
@@ -10151,7 +10003,7 @@ public partial class ListDomainsResponse : Response {
     private Domain[] returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public Domain[] ReturnValue {
         get {
@@ -10196,7 +10048,7 @@ public partial class Domain {
     private bool statusFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<DomainAuthenticationType> Authentication {
         get {
             return this.authenticationField;
@@ -10218,7 +10070,7 @@ public partial class Domain {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<DomainCapabilities> Capabilities {
         get {
             return this.capabilitiesField;
@@ -10240,7 +10092,7 @@ public partial class Domain {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public System.Nullable<bool> IsDefault {
         get {
             return this.isDefaultField;
@@ -10262,7 +10114,7 @@ public partial class Domain {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public System.Nullable<bool> IsInitial {
         get {
             return this.isInitialField;
@@ -10284,7 +10136,7 @@ public partial class Domain {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string Name {
         get {
             return this.nameField;
@@ -10295,7 +10147,7 @@ public partial class Domain {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public string RootDomain {
         get {
             return this.rootDomainField;
@@ -10306,7 +10158,7 @@ public partial class Domain {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public System.Nullable<DomainStatus> Status {
         get {
             return this.statusField;
@@ -10369,7 +10221,7 @@ public partial class GetDomainResponse : Response {
     private Domain returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Domain ReturnValue {
         get {
             return this.returnValueField;
@@ -10392,7 +10244,7 @@ public partial class GetDomainFederationSettingsResponse : Response {
     private DomainFederationSettings returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public DomainFederationSettings ReturnValue {
         get {
             return this.returnValueField;
@@ -10432,7 +10284,7 @@ public partial class DomainFederationSettings {
     private string signingCertificateField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string ActiveLogOnUri {
         get {
             return this.activeLogOnUriField;
@@ -10443,7 +10295,7 @@ public partial class DomainFederationSettings {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string FederationBrandName {
         get {
             return this.federationBrandNameField;
@@ -10454,7 +10306,7 @@ public partial class DomainFederationSettings {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string IssuerUri {
         get {
             return this.issuerUriField;
@@ -10465,7 +10317,7 @@ public partial class DomainFederationSettings {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string LogOffUri {
         get {
             return this.logOffUriField;
@@ -10476,7 +10328,7 @@ public partial class DomainFederationSettings {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string MetadataExchangeUri {
         get {
             return this.metadataExchangeUriField;
@@ -10487,7 +10339,7 @@ public partial class DomainFederationSettings {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public string NextSigningCertificate {
         get {
             return this.nextSigningCertificateField;
@@ -10498,7 +10350,7 @@ public partial class DomainFederationSettings {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public string PassiveLogOnUri {
         get {
             return this.passiveLogOnUriField;
@@ -10509,7 +10361,7 @@ public partial class DomainFederationSettings {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
     public System.Nullable<AuthenticationProtocol> PreferredAuthenticationProtocol {
         get {
             return this.preferredAuthenticationProtocolField;
@@ -10531,7 +10383,7 @@ public partial class DomainFederationSettings {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
     public string SigningCertificate {
         get {
             return this.signingCertificateField;
@@ -10567,7 +10419,7 @@ public partial class AddDomainResponse : Response {
     private Domain returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Domain ReturnValue {
         get {
             return this.returnValueField;
@@ -10590,7 +10442,7 @@ public partial class NavigateContactResultsResponse : Response {
     private ListContactResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListContactResults ReturnValue {
         get {
             return this.returnValueField;
@@ -10613,7 +10465,7 @@ public partial class ListContactsResponse : Response {
     private ListContactResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListContactResults ReturnValue {
         get {
             return this.returnValueField;
@@ -10636,7 +10488,7 @@ public partial class GetContactResponse : Response {
     private Contact returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Contact ReturnValue {
         get {
             return this.returnValueField;
@@ -10659,7 +10511,7 @@ public partial class GetPasswordPolicyResponse : Response {
     private PasswordPolicy returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public PasswordPolicy ReturnValue {
         get {
             return this.returnValueField;
@@ -10687,7 +10539,7 @@ public partial class PasswordPolicy {
     private bool validityPeriodFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<int> NotificationDays {
         get {
             return this.notificationDaysField;
@@ -10709,7 +10561,7 @@ public partial class PasswordPolicy {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<int> ValidityPeriod {
         get {
             return this.validityPeriodField;
@@ -10743,7 +10595,7 @@ public partial class NavigatePartnerContractsResponse : Response {
     private ListPartnerContractResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListPartnerContractResults ReturnValue {
         get {
             return this.returnValueField;
@@ -10766,7 +10618,7 @@ public partial class ListPartnerContractsResponse : Response {
     private ListPartnerContractResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListPartnerContractResults ReturnValue {
         get {
             return this.returnValueField;
@@ -10789,7 +10641,7 @@ public partial class ListAccountSkusResponse : Response {
     private AccountSkuDetails[] returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public AccountSkuDetails[] ReturnValue {
         get {
@@ -10813,7 +10665,7 @@ public partial class ListSubscriptionsResponse : Response {
     private Subscription[] returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public Subscription[] ReturnValue {
         get {
@@ -10837,7 +10689,7 @@ public partial class GetSubscriptionResponse : Response {
     private Subscription returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Subscription ReturnValue {
         get {
             return this.returnValueField;
@@ -10860,7 +10712,7 @@ public partial class GetCompanyInformationResponse : Response {
     private CompanyInformation returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public CompanyInformation ReturnValue {
         get {
             return this.returnValueField;
@@ -10883,7 +10735,7 @@ public partial class GetPartnerInformationResponse : Response {
     private PartnerInformation returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public PartnerInformation ReturnValue {
         get {
             return this.returnValueField;
@@ -10927,7 +10779,7 @@ public partial class PartnerInformation {
     private string partnerSupportUrlField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<CompanyType> CompanyType {
         get {
             return this.companyTypeField;
@@ -10949,7 +10801,7 @@ public partial class PartnerInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute("guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
     public string[] Contracts {
         get {
@@ -10961,7 +10813,7 @@ public partial class PartnerInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public System.Nullable<bool> DapEnabled {
         get {
             return this.dapEnabledField;
@@ -10983,7 +10835,7 @@ public partial class PartnerInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -10994,7 +10846,7 @@ public partial class PartnerInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string PartnerCommerceUrl {
         get {
             return this.partnerCommerceUrlField;
@@ -11005,7 +10857,7 @@ public partial class PartnerInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public string PartnerCompanyName {
         get {
             return this.partnerCompanyNameField;
@@ -11016,7 +10868,7 @@ public partial class PartnerInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public string PartnerHelpUrl {
         get {
             return this.partnerHelpUrlField;
@@ -11027,7 +10879,7 @@ public partial class PartnerInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=7)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] PartnerSupportEmails {
         get {
@@ -11039,7 +10891,7 @@ public partial class PartnerInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=8)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] PartnerSupportTelephones {
         get {
@@ -11051,7 +10903,7 @@ public partial class PartnerInformation {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=9)]
     public string PartnerSupportUrl {
         get {
             return this.partnerSupportUrlField;
@@ -11076,6 +10928,7 @@ public partial class MsolConnectResponse : Response {
     private bool updateAvailableFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public bool UpdateAvailable {
         get {
             return this.updateAvailableField;
@@ -11129,7 +10982,7 @@ public partial class GetHeaderInfoResponse : Response {
     private string trackingHeaderNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ClientVersionHeader ClientVersionHeader {
         get {
             return this.clientVersionHeaderField;
@@ -11140,7 +10993,7 @@ public partial class GetHeaderInfoResponse : Response {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string ClientVersionHeaderName {
         get {
             return this.clientVersionHeaderNameField;
@@ -11151,7 +11004,7 @@ public partial class GetHeaderInfoResponse : Response {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public Context ContextHeader {
         get {
             return this.contextHeaderField;
@@ -11162,7 +11015,7 @@ public partial class GetHeaderInfoResponse : Response {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string ContextHeaderName {
         get {
             return this.contextHeaderNameField;
@@ -11173,7 +11026,7 @@ public partial class GetHeaderInfoResponse : Response {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public ContractVersionHeader ContractVersionHeader {
         get {
             return this.contractVersionHeaderField;
@@ -11184,7 +11037,7 @@ public partial class GetHeaderInfoResponse : Response {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public string ContractVersionHeaderName {
         get {
             return this.contractVersionHeaderNameField;
@@ -11195,7 +11048,7 @@ public partial class GetHeaderInfoResponse : Response {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public string HeaderNameSpace {
         get {
             return this.headerNameSpaceField;
@@ -11206,7 +11059,7 @@ public partial class GetHeaderInfoResponse : Response {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
     public string IdentityHeaderName {
         get {
             return this.identityHeaderNameField;
@@ -11217,7 +11070,7 @@ public partial class GetHeaderInfoResponse : Response {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
     public UserIdentityHeader ReturnValue {
         get {
             return this.returnValueField;
@@ -11228,7 +11081,7 @@ public partial class GetHeaderInfoResponse : Response {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=9)]
     public TrackingHeader TrackingHeader {
         get {
             return this.trackingHeaderField;
@@ -11239,7 +11092,7 @@ public partial class GetHeaderInfoResponse : Response {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=10)]
     public string TrackingHeaderName {
         get {
             return this.trackingHeaderNameField;
@@ -11262,7 +11115,7 @@ public partial class AddServicePrincipalResponse : Response {
     private ServicePrincipalExtended returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ServicePrincipalExtended ReturnValue {
         get {
             return this.returnValueField;
@@ -11285,7 +11138,7 @@ public partial class RestoreUserByUpnResponse : Response {
     private User returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public User ReturnValue {
         get {
             return this.returnValueField;
@@ -11308,7 +11161,7 @@ public partial class RestoreUserResponse : Response {
     private User returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public User ReturnValue {
         get {
             return this.returnValueField;
@@ -11331,7 +11184,7 @@ public partial class ConvertFederatedUserToManagedResponse : Response {
     private string returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string ReturnValue {
         get {
             return this.returnValueField;
@@ -11354,7 +11207,7 @@ public partial class NavigateUserResultsResponse : Response {
     private ListUserResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListUserResults ReturnValue {
         get {
             return this.returnValueField;
@@ -11377,7 +11230,7 @@ public partial class ListUsersByStrongAuthenticationResponse : Response {
     private ListUserResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListUserResults ReturnValue {
         get {
             return this.returnValueField;
@@ -11400,7 +11253,7 @@ public partial class ListUsersResponse : Response {
     private ListUserResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListUserResults ReturnValue {
         get {
             return this.returnValueField;
@@ -11423,7 +11276,7 @@ public partial class GetUserByLiveIdResponse : Response {
     private User returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public User ReturnValue {
         get {
             return this.returnValueField;
@@ -11446,7 +11299,7 @@ public partial class GetUserByUpnResponse : Response {
     private User returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public User ReturnValue {
         get {
             return this.returnValueField;
@@ -11469,7 +11322,7 @@ public partial class GetUserResponse : Response {
     private User returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public User ReturnValue {
         get {
             return this.returnValueField;
@@ -11492,7 +11345,7 @@ public partial class ResetUserPasswordByUpnResponse : Response {
     private string returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string ReturnValue {
         get {
             return this.returnValueField;
@@ -11515,7 +11368,7 @@ public partial class ResetUserPasswordResponse : Response {
     private string returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string ReturnValue {
         get {
             return this.returnValueField;
@@ -11538,7 +11391,7 @@ public partial class ChangeUserPrincipalNameByUpnResponse : Response {
     private string returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string ReturnValue {
         get {
             return this.returnValueField;
@@ -11561,7 +11414,7 @@ public partial class ChangeUserPrincipalNameResponse : Response {
     private string returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string ReturnValue {
         get {
             return this.returnValueField;
@@ -11584,7 +11437,7 @@ public partial class AddUserResponse : Response {
     private UserExtended returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public UserExtended ReturnValue {
         get {
             return this.returnValueField;
@@ -11607,7 +11460,7 @@ public partial class NavigateRoleMemberResultsResponse : Response {
     private ListRoleMemberResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListRoleMemberResults ReturnValue {
         get {
             return this.returnValueField;
@@ -11630,7 +11483,7 @@ public partial class ListRoleMembersResponse : Response {
     private ListRoleMemberResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListRoleMemberResults ReturnValue {
         get {
             return this.returnValueField;
@@ -11653,7 +11506,7 @@ public partial class ListRolesForUserByUpnResponse : Response {
     private Role[] returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public Role[] ReturnValue {
         get {
@@ -11677,7 +11530,7 @@ public partial class ListRolesForUserResponse : Response {
     private Role[] returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public Role[] ReturnValue {
         get {
@@ -11701,7 +11554,7 @@ public partial class ListRolesResponse : Response {
     private Role[] returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public Role[] ReturnValue {
         get {
@@ -11725,7 +11578,7 @@ public partial class GetRoleByNameResponse : Response {
     private Role returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Role ReturnValue {
         get {
             return this.returnValueField;
@@ -11748,7 +11601,7 @@ public partial class GetRoleResponse : Response {
     private Role returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Role ReturnValue {
         get {
             return this.returnValueField;
@@ -11771,7 +11624,7 @@ public partial class NavigateGroupMemberResultsResponse : Response {
     private ListGroupMemberResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListGroupMemberResults ReturnValue {
         get {
             return this.returnValueField;
@@ -11794,7 +11647,7 @@ public partial class ListServicePrincipalCredentialsBySpnResponse : Response {
     private ServicePrincipalCredential[] returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public ServicePrincipalCredential[] ReturnValue {
         get {
@@ -11818,7 +11671,7 @@ public partial class ListServicePrincipalCredentialsByAppPrincipalIdResponse : R
     private ServicePrincipalCredential[] returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public ServicePrincipalCredential[] ReturnValue {
         get {
@@ -11842,7 +11695,7 @@ public partial class ListServicePrincipalCredentialsResponse : Response {
     private ServicePrincipalCredential[] returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public ServicePrincipalCredential[] ReturnValue {
         get {
@@ -11866,7 +11719,7 @@ public partial class NavigateServicePrincipalResultsResponse : Response {
     private ListServicePrincipalResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListServicePrincipalResults ReturnValue {
         get {
             return this.returnValueField;
@@ -11889,7 +11742,7 @@ public partial class ListServicePrincipalsResponse : Response {
     private ListServicePrincipalResults returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ListServicePrincipalResults ReturnValue {
         get {
             return this.returnValueField;
@@ -11912,7 +11765,7 @@ public partial class GetServicePrincipalBySpnResponse : Response {
     private ServicePrincipal returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ServicePrincipal ReturnValue {
         get {
             return this.returnValueField;
@@ -11935,7 +11788,7 @@ public partial class GetServicePrincipalByAppPrincipalIdResponse : Response {
     private ServicePrincipal returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ServicePrincipal ReturnValue {
         get {
             return this.returnValueField;
@@ -11958,7 +11811,7 @@ public partial class GetServicePrincipalResponse : Response {
     private ServicePrincipal returnValueField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ServicePrincipal ReturnValue {
         get {
             return this.returnValueField;
@@ -11990,7 +11843,7 @@ public partial class DomainSearchFilter {
     private bool statusFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<DomainAuthenticationType> Authentication {
         get {
             return this.authenticationField;
@@ -12012,7 +11865,7 @@ public partial class DomainSearchFilter {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<DomainCapabilities> Capability {
         get {
             return this.capabilityField;
@@ -12034,7 +11887,7 @@ public partial class DomainSearchFilter {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public System.Nullable<DomainStatus> Status {
         get {
             return this.statusField;
@@ -12073,7 +11926,7 @@ public partial class CompanySettings {
     private bool usersPermissionToCreateGroupsEnabledFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> SelfServePasswordResetEnabled {
         get {
             return this.selfServePasswordResetEnabledField;
@@ -12095,7 +11948,7 @@ public partial class CompanySettings {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> UsersPermissionToCreateGroupsEnabled {
         get {
             return this.usersPermissionToCreateGroupsEnabledField;
@@ -12130,7 +11983,7 @@ public partial class LicenseOption {
     private string[] disabledServicePlansField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public AccountSkuIdentifier AccountSkuId {
         get {
             return this.accountSkuIdField;
@@ -12141,7 +11994,7 @@ public partial class LicenseOption {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] DisabledServicePlans {
         get {
@@ -12184,6 +12037,7 @@ public partial class SearchDefinition {
     private bool sortFieldFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public int PageSize {
         get {
             return this.pageSizeField;
@@ -12205,7 +12059,7 @@ public partial class SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string SearchString {
         get {
             return this.searchStringField;
@@ -12216,6 +12070,7 @@ public partial class SearchDefinition {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public SortDirection SortDirection {
         get {
             return this.sortDirectionField;
@@ -12237,6 +12092,7 @@ public partial class SearchDefinition {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
     public SortField SortField {
         get {
             return this.sortFieldField;
@@ -12302,6 +12158,7 @@ public partial class GroupMemberSearchDefinition : SearchDefinition {
     private string[] memberObjectTypesField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string GroupObjectId {
         get {
             return this.groupObjectIdField;
@@ -12312,7 +12169,7 @@ public partial class GroupMemberSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] IncludedProperties {
         get {
@@ -12324,7 +12181,7 @@ public partial class GroupMemberSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=2)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] MemberObjectTypes {
         get {
@@ -12363,7 +12220,7 @@ public partial class GroupSearchDefinition : SearchDefinition {
     private string userPrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<GroupType> GroupType {
         get {
             return this.groupTypeField;
@@ -12385,7 +12242,7 @@ public partial class GroupSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> HasErrorsOnly {
         get {
             return this.hasErrorsOnlyField;
@@ -12407,7 +12264,7 @@ public partial class GroupSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=2)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] IncludedProperties {
         get {
@@ -12419,7 +12276,7 @@ public partial class GroupSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public System.Nullable<bool> IsAgentRole {
         get {
             return this.isAgentRoleField;
@@ -12441,7 +12298,7 @@ public partial class GroupSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string UserObjectId {
         get {
             return this.userObjectIdField;
@@ -12452,7 +12309,7 @@ public partial class GroupSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -12478,7 +12335,7 @@ public partial class ContactSearchDefinition : SearchDefinition {
     private string[] includedPropertiesField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> HasErrorsOnly {
         get {
             return this.hasErrorsOnlyField;
@@ -12500,7 +12357,7 @@ public partial class ContactSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] IncludedProperties {
         get {
@@ -12525,7 +12382,7 @@ public partial class PartnerContractSearchDefinition : SearchDefinition {
     private string managedTenantIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string DomainName {
         get {
             return this.domainNameField;
@@ -12536,7 +12393,7 @@ public partial class PartnerContractSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string ManagedTenantId {
         get {
             return this.managedTenantIdField;
@@ -12566,7 +12423,7 @@ public partial class UserSearchByStrongAuthenticationDefinition : SearchDefiniti
     private string roleObjectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] IncludedProperties {
         get {
@@ -12578,6 +12435,7 @@ public partial class UserSearchByStrongAuthenticationDefinition : SearchDefiniti
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public bool RequirementUnsetOnly {
         get {
             return this.requirementUnsetOnlyField;
@@ -12599,7 +12457,7 @@ public partial class UserSearchByStrongAuthenticationDefinition : SearchDefiniti
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=2)]
     public StrongAuthenticationRequirement[] Requirements {
         get {
             return this.requirementsField;
@@ -12610,7 +12468,7 @@ public partial class UserSearchByStrongAuthenticationDefinition : SearchDefiniti
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string RoleObjectId {
         get {
             return this.roleObjectIdField;
@@ -12676,7 +12534,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     private string usageLocationField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public AccountSkuIdentifier AccountSku {
         get {
             return this.accountSkuField;
@@ -12687,7 +12545,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> BlackberryUsersOnly {
         get {
             return this.blackberryUsersOnlyField;
@@ -12709,7 +12567,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string City {
         get {
             return this.cityField;
@@ -12720,7 +12578,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string Country {
         get {
             return this.countryField;
@@ -12731,7 +12589,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string Department {
         get {
             return this.departmentField;
@@ -12742,7 +12600,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
     public string DomainName {
         get {
             return this.domainNameField;
@@ -12753,7 +12611,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public System.Nullable<UserEnabledFilter> EnabledFilter {
         get {
             return this.enabledFilterField;
@@ -12775,7 +12633,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
     public System.Nullable<bool> HasErrorsOnly {
         get {
             return this.hasErrorsOnlyField;
@@ -12797,7 +12655,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=8)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] IncludedProperties {
         get {
@@ -12809,7 +12667,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=9)]
     public System.Nullable<bool> LicenseReconciliationNeededOnly {
         get {
             return this.licenseReconciliationNeededOnlyField;
@@ -12831,7 +12689,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=10)]
     public System.Nullable<bool> ReturnDeletedUsers {
         get {
             return this.returnDeletedUsersField;
@@ -12853,7 +12711,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=11)]
     public string State {
         get {
             return this.stateField;
@@ -12864,7 +12722,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=12)]
     public System.Nullable<bool> Synchronized {
         get {
             return this.synchronizedField;
@@ -12886,7 +12744,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=13)]
     public string Title {
         get {
             return this.titleField;
@@ -12897,7 +12755,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=14)]
     public System.Nullable<bool> UnlicensedUsersOnly {
         get {
             return this.unlicensedUsersOnlyField;
@@ -12919,7 +12777,7 @@ public partial class UserSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=15)]
     public string UsageLocation {
         get {
             return this.usageLocationField;
@@ -12961,7 +12819,7 @@ public partial class RoleMemberSearchDefinition : SearchDefinition {
     private string roleObjectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] IncludedProperties {
         get {
@@ -12973,7 +12831,7 @@ public partial class RoleMemberSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] MemberObjectTypes {
         get {
@@ -12985,6 +12843,7 @@ public partial class RoleMemberSearchDefinition : SearchDefinition {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public string RoleObjectId {
         get {
             return this.roleObjectIdField;
@@ -13016,7 +12875,7 @@ public partial class ListGroupMembersRequest : Request {
     private GroupMemberSearchDefinition groupMemberSearchDefinitionField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public GroupMemberSearchDefinition GroupMemberSearchDefinition {
         get {
             return this.groupMemberSearchDefinitionField;
@@ -13041,7 +12900,7 @@ public partial class RemoveGroupMembersRequest : Request {
     private string groupObjectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public GroupMember[] GroupMembers {
         get {
@@ -13053,6 +12912,7 @@ public partial class RemoveGroupMembersRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public string GroupObjectId {
         get {
             return this.groupObjectIdField;
@@ -13077,7 +12937,7 @@ public partial class AddGroupMembersRequest : Request {
     private string groupObjectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public GroupMember[] GroupMembers {
         get {
@@ -13089,6 +12949,7 @@ public partial class AddGroupMembersRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public string GroupObjectId {
         get {
             return this.groupObjectIdField;
@@ -13115,7 +12976,7 @@ public partial class NavigateGroupResultsRequest : Request {
     private bool pageToNavigateFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=0)]
     public byte[] ListContext {
         get {
             return this.listContextField;
@@ -13126,6 +12987,7 @@ public partial class NavigateGroupResultsRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public Page PageToNavigate {
         get {
             return this.pageToNavigateField;
@@ -13178,7 +13040,7 @@ public partial class ListGroupsRequest : Request {
     private GroupSearchDefinition groupSearchDefinitionField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public GroupSearchDefinition GroupSearchDefinition {
         get {
             return this.groupSearchDefinitionField;
@@ -13201,6 +13063,7 @@ public partial class GetGroupRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -13223,7 +13086,7 @@ public partial class SetGroupRequest : Request {
     private Group groupField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Group Group {
         get {
             return this.groupField;
@@ -13246,6 +13109,7 @@ public partial class RemoveGroupRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -13268,7 +13132,7 @@ public partial class AddWellKnownGroupRequest : Request {
     private string wellKnownGroupNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string WellKnownGroupName {
         get {
             return this.wellKnownGroupNameField;
@@ -13291,7 +13155,7 @@ public partial class AddGroupRequest : Request {
     private Group groupField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Group Group {
         get {
             return this.groupField;
@@ -13318,7 +13182,7 @@ public partial class GetDomainVerificationDnsRequest : Request {
     private bool modeFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string DomainName {
         get {
             return this.domainNameField;
@@ -13329,7 +13193,7 @@ public partial class GetDomainVerificationDnsRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<DomainVerificationMode> Mode {
         get {
             return this.modeField;
@@ -13379,7 +13243,7 @@ public partial class ListDomainsRequest : Request {
     private DomainSearchFilter searchFilterField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public DomainSearchFilter SearchFilter {
         get {
             return this.searchFilterField;
@@ -13402,7 +13266,7 @@ public partial class GetDomainRequest : Request {
     private string domainNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string DomainName {
         get {
             return this.domainNameField;
@@ -13427,7 +13291,7 @@ public partial class SetDomainFederationSettingsRequest : Request {
     private DomainFederationSettings federationSettingsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string DomainName {
         get {
             return this.domainNameField;
@@ -13438,7 +13302,7 @@ public partial class SetDomainFederationSettingsRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public DomainFederationSettings FederationSettings {
         get {
             return this.federationSettingsField;
@@ -13461,7 +13325,7 @@ public partial class GetDomainFederationSettingsRequest : Request {
     private string domainNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string DomainName {
         get {
             return this.domainNameField;
@@ -13490,6 +13354,7 @@ public partial class SetDomainAuthenticationRequest : Request {
     private DomainFederationSettings federationSettingsField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public DomainAuthenticationType Authentication {
         get {
             return this.authenticationField;
@@ -13511,7 +13376,7 @@ public partial class SetDomainAuthenticationRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string DomainName {
         get {
             return this.domainNameField;
@@ -13522,7 +13387,7 @@ public partial class SetDomainAuthenticationRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public DomainFederationSettings FederationSettings {
         get {
             return this.federationSettingsField;
@@ -13545,7 +13410,7 @@ public partial class SetDomainRequest : Request {
     private Domain domainField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Domain Domain {
         get {
             return this.domainField;
@@ -13568,7 +13433,7 @@ public partial class RemoveDomainRequest : Request {
     private string domainNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string DomainName {
         get {
             return this.domainNameField;
@@ -13593,7 +13458,7 @@ public partial class VerifyDomainRequest : Request {
     private DomainFederationSettings federationSettingsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string DomainName {
         get {
             return this.domainNameField;
@@ -13604,7 +13469,7 @@ public partial class VerifyDomainRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public DomainFederationSettings FederationSettings {
         get {
             return this.federationSettingsField;
@@ -13627,7 +13492,7 @@ public partial class AddDomainRequest : Request {
     private Domain domainField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public Domain Domain {
         get {
             return this.domainField;
@@ -13650,6 +13515,7 @@ public partial class RetryContactProvisioningRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -13676,7 +13542,7 @@ public partial class NavigateContactResultsRequest : Request {
     private bool pageToNavigateFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=0)]
     public byte[] ListContext {
         get {
             return this.listContextField;
@@ -13687,6 +13553,7 @@ public partial class NavigateContactResultsRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public Page PageToNavigate {
         get {
             return this.pageToNavigateField;
@@ -13720,7 +13587,7 @@ public partial class ListContactsRequest : Request {
     private ContactSearchDefinition contactSearchDefinitionField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ContactSearchDefinition ContactSearchDefinition {
         get {
             return this.contactSearchDefinitionField;
@@ -13743,6 +13610,7 @@ public partial class GetContactRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -13765,6 +13633,7 @@ public partial class RemoveContactRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -13789,7 +13658,7 @@ public partial class SetPasswordPolicyRequest : Request {
     private PasswordPolicy policyField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string DomainName {
         get {
             return this.domainNameField;
@@ -13800,7 +13669,7 @@ public partial class SetPasswordPolicyRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public PasswordPolicy Policy {
         get {
             return this.policyField;
@@ -13823,7 +13692,7 @@ public partial class GetPasswordPolicyRequest : Request {
     private string domainNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string DomainName {
         get {
             return this.domainNameField;
@@ -13850,7 +13719,7 @@ public partial class NavigatePartnerContractsRequest : Request {
     private bool pageToNavigateFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=0)]
     public byte[] ListContext {
         get {
             return this.listContextField;
@@ -13861,6 +13730,7 @@ public partial class NavigatePartnerContractsRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public Page PageToNavigate {
         get {
             return this.pageToNavigateField;
@@ -13894,7 +13764,7 @@ public partial class ListPartnerContractsRequest : Request {
     private PartnerContractSearchDefinition partnerContractSearchDefinitionField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public PartnerContractSearchDefinition PartnerContractSearchDefinition {
         get {
             return this.partnerContractSearchDefinitionField;
@@ -13917,7 +13787,7 @@ public partial class SetCompanySettingsRequest : Request {
     private CompanySettings settingsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public CompanySettings Settings {
         get {
             return this.settingsField;
@@ -13942,6 +13812,7 @@ public partial class SetCompanyPasswordSyncEnabledRequest : Request {
     private bool enablePasswordSyncFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public bool EnablePasswordSync {
         get {
             return this.enablePasswordSyncField;
@@ -13977,6 +13848,7 @@ public partial class SetCompanyDirSyncEnabledRequest : Request {
     private bool enableDirSyncFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public bool EnableDirSync {
         get {
             return this.enableDirSyncField;
@@ -14012,7 +13884,7 @@ public partial class SetCompanyContactInformationRequest : Request {
     private string[] technicalNotificationEmailsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] MarketingNotificationEmails {
         get {
@@ -14024,7 +13896,7 @@ public partial class SetCompanyContactInformationRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] TechnicalNotificationEmails {
         get {
@@ -14048,7 +13920,7 @@ public partial class SetPartnerInformationRequest : Request {
     private PartnerInformation partnerInformationField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public PartnerInformation PartnerInformation {
         get {
             return this.partnerInformationField;
@@ -14071,7 +13943,7 @@ public partial class ListAccountSkusRequest : Request {
     private string accountIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string AccountId {
         get {
             return this.accountIdField;
@@ -14094,6 +13966,7 @@ public partial class GetSubscriptionRequest : Request {
     private string subscriptionIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string SubscriptionId {
         get {
             return this.subscriptionIdField;
@@ -14116,6 +13989,7 @@ public partial class RemoveServicePrincipalRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -14144,6 +14018,7 @@ public partial class AddServicePrincipalCredentialsByAppPrincipalIdRequest : Req
     private bool msodsAsKeyStoreFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string AppPrincipalId {
         get {
             return this.appPrincipalIdField;
@@ -14154,7 +14029,7 @@ public partial class AddServicePrincipalCredentialsByAppPrincipalIdRequest : Req
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public ServicePrincipalCredential[] Credentials {
         get {
@@ -14166,7 +14041,7 @@ public partial class AddServicePrincipalCredentialsByAppPrincipalIdRequest : Req
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public System.Nullable<bool> MsodsAsKeyStore {
         get {
             return this.msodsAsKeyStoreField;
@@ -14206,7 +14081,7 @@ public partial class AddServicePrincipalCredentialsBySpnRequest : Request {
     private string servicePrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public ServicePrincipalCredential[] Credentials {
         get {
@@ -14218,7 +14093,7 @@ public partial class AddServicePrincipalCredentialsBySpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> MsodsAsKeyStore {
         get {
             return this.msodsAsKeyStoreField;
@@ -14240,7 +14115,7 @@ public partial class AddServicePrincipalCredentialsBySpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string ServicePrincipalName {
         get {
             return this.servicePrincipalNameField;
@@ -14269,7 +14144,7 @@ public partial class AddServicePrincipalCredentialsRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public ServicePrincipalCredential[] Credentials {
         get {
@@ -14281,7 +14156,7 @@ public partial class AddServicePrincipalCredentialsRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> MsodsAsKeyStore {
         get {
             return this.msodsAsKeyStoreField;
@@ -14303,6 +14178,7 @@ public partial class AddServicePrincipalCredentialsRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -14341,7 +14217,7 @@ public partial class AddServicePrincipalRequest : Request {
     private bool trustedForDelegationFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> AccountEnabled {
         get {
             return this.accountEnabledField;
@@ -14363,7 +14239,7 @@ public partial class AddServicePrincipalRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public RedirectUri[] Addresses {
         get {
@@ -14375,7 +14251,7 @@ public partial class AddServicePrincipalRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string AppPrincipalId {
         get {
             return this.appPrincipalIdField;
@@ -14386,7 +14262,7 @@ public partial class AddServicePrincipalRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=3)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public ServicePrincipalCredential[] Credentials {
         get {
@@ -14398,7 +14274,7 @@ public partial class AddServicePrincipalRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public string DisplayName {
         get {
             return this.displayNameField;
@@ -14409,7 +14285,7 @@ public partial class AddServicePrincipalRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=5)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     public string[] ServicePrincipalNames {
         get {
@@ -14421,7 +14297,7 @@ public partial class AddServicePrincipalRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
     public System.Nullable<bool> TrustedForDelegation {
         get {
             return this.trustedForDelegationField;
@@ -14457,7 +14333,7 @@ public partial class DeleteApplicationPasswordRequest : Request {
     private string userPrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string PasswordId {
         get {
             return this.passwordIdField;
@@ -14468,7 +14344,7 @@ public partial class DeleteApplicationPasswordRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -14491,7 +14367,7 @@ public partial class ResetStrongAuthenticationMethodByUpnRequest : Request {
     private string userPrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -14520,7 +14396,7 @@ public partial class RestoreUserByUpnRequest : Request {
     private string userPrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> AutoReconcileProxyConflicts {
         get {
             return this.autoReconcileProxyConflictsField;
@@ -14542,7 +14418,7 @@ public partial class RestoreUserByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string NewUserPrincipalName {
         get {
             return this.newUserPrincipalNameField;
@@ -14553,7 +14429,7 @@ public partial class RestoreUserByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -14582,7 +14458,7 @@ public partial class RestoreUserRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> AutoReconcileProxyConflicts {
         get {
             return this.autoReconcileProxyConflictsField;
@@ -14604,7 +14480,7 @@ public partial class RestoreUserRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string NewUserPrincipalName {
         get {
             return this.newUserPrincipalNameField;
@@ -14615,6 +14491,7 @@ public partial class RestoreUserRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -14639,7 +14516,7 @@ public partial class ConvertFederatedUserToManagedRequest : Request {
     private string userPrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string NewPassword {
         get {
             return this.newPasswordField;
@@ -14650,7 +14527,7 @@ public partial class ConvertFederatedUserToManagedRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -14673,6 +14550,7 @@ public partial class RetryUserProvisioningRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -14701,7 +14579,7 @@ public partial class SetUserLicensesByUpnRequest : Request {
     private string userPrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public AccountSkuIdentifier[] AddLicenses {
         get {
@@ -14713,7 +14591,7 @@ public partial class SetUserLicensesByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public LicenseOption[] LicenseOptions {
         get {
@@ -14725,7 +14603,7 @@ public partial class SetUserLicensesByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=2)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public AccountSkuIdentifier[] RemoveLicenses {
         get {
@@ -14737,7 +14615,7 @@ public partial class SetUserLicensesByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -14766,7 +14644,7 @@ public partial class SetUserLicensesRequest : Request {
     private AccountSkuIdentifier[] removeLicensesField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public AccountSkuIdentifier[] AddLicenses {
         get {
@@ -14778,7 +14656,7 @@ public partial class SetUserLicensesRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public LicenseOption[] LicenseOptions {
         get {
@@ -14790,6 +14668,7 @@ public partial class SetUserLicensesRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -14800,7 +14679,7 @@ public partial class SetUserLicensesRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=3)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public AccountSkuIdentifier[] RemoveLicenses {
         get {
@@ -14828,7 +14707,7 @@ public partial class NavigateUserResultsRequest : Request {
     private bool pageToNavigateFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=0)]
     public byte[] ListContext {
         get {
             return this.listContextField;
@@ -14839,6 +14718,7 @@ public partial class NavigateUserResultsRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public Page PageToNavigate {
         get {
             return this.pageToNavigateField;
@@ -14872,7 +14752,7 @@ public partial class ListUsersByStrongAuthenticationRequest : Request {
     private UserSearchByStrongAuthenticationDefinition userSearchDefinitionField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public UserSearchByStrongAuthenticationDefinition UserSearchDefinition {
         get {
             return this.userSearchDefinitionField;
@@ -14895,7 +14775,7 @@ public partial class ListUsersRequest : Request {
     private UserSearchDefinition userSearchDefinitionField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public UserSearchDefinition UserSearchDefinition {
         get {
             return this.userSearchDefinitionField;
@@ -14918,7 +14798,7 @@ public partial class GetUserByLiveIdRequest : Request {
     private string liveIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string LiveId {
         get {
             return this.liveIdField;
@@ -14945,7 +14825,7 @@ public partial class GetUserByUpnRequest : Request {
     private string userPrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> ReturnDeletedUsers {
         get {
             return this.returnDeletedUsersField;
@@ -14967,7 +14847,7 @@ public partial class GetUserByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -14994,6 +14874,7 @@ public partial class GetUserRequest : Request {
     private bool returnDeletedUsersFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -15004,7 +14885,7 @@ public partial class GetUserRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> ReturnDeletedUsers {
         get {
             return this.returnDeletedUsersField;
@@ -15044,7 +14925,7 @@ public partial class ResetUserPasswordByUpnRequest : Request {
     private string userPrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> ForceChangePassword {
         get {
             return this.forceChangePasswordField;
@@ -15066,7 +14947,7 @@ public partial class ResetUserPasswordByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string NewPassword {
         get {
             return this.newPasswordField;
@@ -15077,7 +14958,7 @@ public partial class ResetUserPasswordByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -15106,7 +14987,7 @@ public partial class ResetUserPasswordRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> ForceChangePassword {
         get {
             return this.forceChangePasswordField;
@@ -15128,7 +15009,7 @@ public partial class ResetUserPasswordRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string NewPassword {
         get {
             return this.newPasswordField;
@@ -15139,6 +15020,7 @@ public partial class ResetUserPasswordRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -15167,7 +15049,7 @@ public partial class ChangeUserPrincipalNameByUpnRequest : Request {
     private string userPrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string ImmutableId {
         get {
             return this.immutableIdField;
@@ -15178,7 +15060,7 @@ public partial class ChangeUserPrincipalNameByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string NewPassword {
         get {
             return this.newPasswordField;
@@ -15189,7 +15071,7 @@ public partial class ChangeUserPrincipalNameByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string NewUserPrincipalName {
         get {
             return this.newUserPrincipalNameField;
@@ -15200,7 +15082,7 @@ public partial class ChangeUserPrincipalNameByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -15229,7 +15111,7 @@ public partial class ChangeUserPrincipalNameRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string ImmutableId {
         get {
             return this.immutableIdField;
@@ -15240,7 +15122,7 @@ public partial class ChangeUserPrincipalNameRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string NewPassword {
         get {
             return this.newPasswordField;
@@ -15251,7 +15133,7 @@ public partial class ChangeUserPrincipalNameRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string NewUserPrincipalName {
         get {
             return this.newUserPrincipalNameField;
@@ -15262,6 +15144,7 @@ public partial class ChangeUserPrincipalNameRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -15284,7 +15167,7 @@ public partial class SetUserRequest : Request {
     private User userField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public User User {
         get {
             return this.userField;
@@ -15311,7 +15194,7 @@ public partial class RemoveUserByUpnRequest : Request {
     private string userPrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> RemoveFromRecycleBin {
         get {
             return this.removeFromRecycleBinField;
@@ -15333,7 +15216,7 @@ public partial class RemoveUserByUpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -15360,6 +15243,7 @@ public partial class RemoveUserRequest : Request {
     private bool removeFromRecycleBinFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -15370,7 +15254,7 @@ public partial class RemoveUserRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> RemoveFromRecycleBin {
         get {
             return this.removeFromRecycleBinField;
@@ -15414,7 +15298,7 @@ public partial class AddUserRequest : Request {
     private User userField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> ForceChangePassword {
         get {
             return this.forceChangePasswordField;
@@ -15436,7 +15320,7 @@ public partial class AddUserRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public AccountSkuIdentifier[] LicenseAssignment {
         get {
@@ -15448,7 +15332,7 @@ public partial class AddUserRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=2)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public LicenseOption[] LicenseOptions {
         get {
@@ -15460,7 +15344,7 @@ public partial class AddUserRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
     public string Password {
         get {
             return this.passwordField;
@@ -15471,7 +15355,7 @@ public partial class AddUserRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
     public User User {
         get {
             return this.userField;
@@ -15498,6 +15382,7 @@ public partial class RemoveForeignGroupFromRoleRequest : Request {
     private string roleObjectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ForeignCompanyObjectId {
         get {
             return this.foreignCompanyObjectIdField;
@@ -15508,6 +15393,7 @@ public partial class RemoveForeignGroupFromRoleRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public string ForeignGroupObjectId {
         get {
             return this.foreignGroupObjectIdField;
@@ -15518,6 +15404,7 @@ public partial class RemoveForeignGroupFromRoleRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public string RoleObjectId {
         get {
             return this.roleObjectIdField;
@@ -15544,6 +15431,7 @@ public partial class AddForeignGroupToRoleRequest : Request {
     private string roleObjectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ForeignCompanyObjectId {
         get {
             return this.foreignCompanyObjectIdField;
@@ -15554,6 +15442,7 @@ public partial class AddForeignGroupToRoleRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public string ForeignGroupObjectId {
         get {
             return this.foreignGroupObjectIdField;
@@ -15564,6 +15453,7 @@ public partial class AddForeignGroupToRoleRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public string RoleObjectId {
         get {
             return this.roleObjectIdField;
@@ -15590,7 +15480,7 @@ public partial class NavigateRoleMemberResultsRequest : Request {
     private bool pageToNavigateFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=0)]
     public byte[] ListContext {
         get {
             return this.listContextField;
@@ -15601,6 +15491,7 @@ public partial class NavigateRoleMemberResultsRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public Page PageToNavigate {
         get {
             return this.pageToNavigateField;
@@ -15634,7 +15525,7 @@ public partial class ListRoleMembersRequest : Request {
     private RoleMemberSearchDefinition roleMemberSearchDefinitionField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public RoleMemberSearchDefinition RoleMemberSearchDefinition {
         get {
             return this.roleMemberSearchDefinitionField;
@@ -15659,7 +15550,7 @@ public partial class RemoveRoleMembersByRoleNameRequest : Request {
     private string roleNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public RoleMember[] RoleMembers {
         get {
@@ -15671,7 +15562,7 @@ public partial class RemoveRoleMembersByRoleNameRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string RoleName {
         get {
             return this.roleNameField;
@@ -15696,7 +15587,7 @@ public partial class RemoveRoleMembersRequest : Request {
     private string roleObjectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public RoleMember[] RoleMembers {
         get {
@@ -15708,6 +15599,7 @@ public partial class RemoveRoleMembersRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public string RoleObjectId {
         get {
             return this.roleObjectIdField;
@@ -15732,7 +15624,7 @@ public partial class AddRoleMembersByRoleNameRequest : Request {
     private string roleNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public RoleMember[] RoleMembers {
         get {
@@ -15744,7 +15636,7 @@ public partial class AddRoleMembersByRoleNameRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string RoleName {
         get {
             return this.roleNameField;
@@ -15769,7 +15661,7 @@ public partial class AddRoleMembersRequest : Request {
     private string roleObjectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration")]
     public RoleMember[] RoleMembers {
         get {
@@ -15781,6 +15673,7 @@ public partial class AddRoleMembersRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public string RoleObjectId {
         get {
             return this.roleObjectIdField;
@@ -15803,7 +15696,7 @@ public partial class ListRolesForUserByUpnRequest : Request {
     private string userPrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string UserPrincipalName {
         get {
             return this.userPrincipalNameField;
@@ -15826,6 +15719,7 @@ public partial class ListRolesForUserRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -15848,7 +15742,7 @@ public partial class GetRoleByNameRequest : Request {
     private string roleNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string RoleName {
         get {
             return this.roleNameField;
@@ -15871,6 +15765,7 @@ public partial class GetRoleRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -15893,6 +15788,7 @@ public partial class RetryGroupProvisioningRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -15919,7 +15815,7 @@ public partial class NavigateGroupMemberResultsRequest : Request {
     private bool pageToNavigateFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=0)]
     public byte[] ListContext {
         get {
             return this.listContextField;
@@ -15930,6 +15826,7 @@ public partial class NavigateGroupMemberResultsRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public Page PageToNavigate {
         get {
             return this.pageToNavigateField;
@@ -15967,7 +15864,7 @@ public partial class ListServicePrincipalCredentialsBySpnRequest : Request {
     private string servicePrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public System.Nullable<bool> ReturnKeyValues {
         get {
             return this.returnKeyValuesField;
@@ -15989,7 +15886,7 @@ public partial class ListServicePrincipalCredentialsBySpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public string ServicePrincipalName {
         get {
             return this.servicePrincipalNameField;
@@ -16016,6 +15913,7 @@ public partial class ListServicePrincipalCredentialsByAppPrincipalIdRequest : Re
     private bool returnKeyValuesFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string AppPrincipalId {
         get {
             return this.appPrincipalIdField;
@@ -16026,7 +15924,7 @@ public partial class ListServicePrincipalCredentialsByAppPrincipalIdRequest : Re
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> ReturnKeyValues {
         get {
             return this.returnKeyValuesField;
@@ -16064,6 +15962,7 @@ public partial class ListServicePrincipalCredentialsRequest : Request {
     private bool returnKeyValuesFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -16074,7 +15973,7 @@ public partial class ListServicePrincipalCredentialsRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> ReturnKeyValues {
         get {
             return this.returnKeyValuesField;
@@ -16112,7 +16011,7 @@ public partial class NavigateServicePrincipalResultsRequest : Request {
     private bool pageToNavigateFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=0)]
     public byte[] ListContext {
         get {
             return this.listContextField;
@@ -16123,6 +16022,7 @@ public partial class NavigateServicePrincipalResultsRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public Page PageToNavigate {
         get {
             return this.pageToNavigateField;
@@ -16156,7 +16056,7 @@ public partial class ListServicePrincipalsRequest : Request {
     private ServicePrincipalSearchDefinition servicePrincipalSearchDefinitionField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ServicePrincipalSearchDefinition ServicePrincipalSearchDefinition {
         get {
             return this.servicePrincipalSearchDefinitionField;
@@ -16179,7 +16079,7 @@ public partial class SetServicePrincipalRequest : Request {
     private ServicePrincipal servicePrincipalField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public ServicePrincipal ServicePrincipal {
         get {
             return this.servicePrincipalField;
@@ -16208,6 +16108,7 @@ public partial class RemoveServicePrincipalCredentialsByAppPrincipalIdRequest : 
     private bool msodsAsKeyStoreFieldSpecified;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string AppPrincipalId {
         get {
             return this.appPrincipalIdField;
@@ -16218,7 +16119,7 @@ public partial class RemoveServicePrincipalCredentialsByAppPrincipalIdRequest : 
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
     [System.Xml.Serialization.XmlArrayItemAttribute("guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
     public string[] KeyIds {
         get {
@@ -16230,7 +16131,7 @@ public partial class RemoveServicePrincipalCredentialsByAppPrincipalIdRequest : 
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public System.Nullable<bool> MsodsAsKeyStore {
         get {
             return this.msodsAsKeyStoreField;
@@ -16270,7 +16171,7 @@ public partial class RemoveServicePrincipalCredentialsBySpnRequest : Request {
     private string servicePrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute("guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
     public string[] KeyIds {
         get {
@@ -16282,7 +16183,7 @@ public partial class RemoveServicePrincipalCredentialsBySpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> MsodsAsKeyStore {
         get {
             return this.msodsAsKeyStoreField;
@@ -16304,7 +16205,7 @@ public partial class RemoveServicePrincipalCredentialsBySpnRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
     public string ServicePrincipalName {
         get {
             return this.servicePrincipalNameField;
@@ -16333,7 +16234,7 @@ public partial class RemoveServicePrincipalCredentialsRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
     [System.Xml.Serialization.XmlArrayItemAttribute("guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
     public string[] KeyIds {
         get {
@@ -16345,7 +16246,7 @@ public partial class RemoveServicePrincipalCredentialsRequest : Request {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
     public System.Nullable<bool> MsodsAsKeyStore {
         get {
             return this.msodsAsKeyStoreField;
@@ -16367,6 +16268,7 @@ public partial class RemoveServicePrincipalCredentialsRequest : Request {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -16384,34 +16286,12 @@ public partial class RemoveServicePrincipalCredentialsRequest : Request {
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration.WebServic" +
     "e")]
-public partial class GetServicePrincipalBySpnRequest : Request {
-    
-    private string servicePrincipalNameField;
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public string ServicePrincipalName {
-        get {
-            return this.servicePrincipalNameField;
-        }
-        set {
-            this.servicePrincipalNameField = value;
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.SerializableAttribute()]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration.WebServic" +
-    "e")]
 public partial class GetServicePrincipalByAppPrincipalIdRequest : Request {
     
     private string appPrincipalIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string AppPrincipalId {
         get {
             return this.appPrincipalIdField;
@@ -16434,6 +16314,7 @@ public partial class GetServicePrincipalRequest : Request {
     private string objectIdField;
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string ObjectId {
         get {
             return this.objectIdField;
@@ -16456,7 +16337,7 @@ public partial class RemoveServicePrincipalBySpnRequest : Request {
     private string servicePrincipalNameField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
     public string ServicePrincipalName {
         get {
             return this.servicePrincipalNameField;
@@ -16470,248 +16351,22 @@ public partial class RemoveServicePrincipalBySpnRequest : Request {
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
 [System.SerializableAttribute()]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://provisioning.microsoftonline.com/")]
-public enum HttpStatusCode {
-    
-    /// <remarks/>
-    Continue,
-    
-    /// <remarks/>
-    SwitchingProtocols,
-    
-    /// <remarks/>
-    OK,
-    
-    /// <remarks/>
-    Created,
-    
-    /// <remarks/>
-    Accepted,
-    
-    /// <remarks/>
-    NonAuthoritativeInformation,
-    
-    /// <remarks/>
-    NoContent,
-    
-    /// <remarks/>
-    ResetContent,
-    
-    /// <remarks/>
-    PartialContent,
-    
-    /// <remarks/>
-    MultipleChoices,
-    
-    /// <remarks/>
-    Ambiguous,
-    
-    /// <remarks/>
-    MovedPermanently,
-    
-    /// <remarks/>
-    Moved,
-    
-    /// <remarks/>
-    Found,
-    
-    /// <remarks/>
-    Redirect,
-    
-    /// <remarks/>
-    SeeOther,
-    
-    /// <remarks/>
-    RedirectMethod,
-    
-    /// <remarks/>
-    NotModified,
-    
-    /// <remarks/>
-    UseProxy,
-    
-    /// <remarks/>
-    Unused,
-    
-    /// <remarks/>
-    TemporaryRedirect,
-    
-    /// <remarks/>
-    RedirectKeepVerb,
-    
-    /// <remarks/>
-    BadRequest,
-    
-    /// <remarks/>
-    Unauthorized,
-    
-    /// <remarks/>
-    PaymentRequired,
-    
-    /// <remarks/>
-    Forbidden,
-    
-    /// <remarks/>
-    NotFound,
-    
-    /// <remarks/>
-    MethodNotAllowed,
-    
-    /// <remarks/>
-    NotAcceptable,
-    
-    /// <remarks/>
-    ProxyAuthenticationRequired,
-    
-    /// <remarks/>
-    RequestTimeout,
-    
-    /// <remarks/>
-    Conflict,
-    
-    /// <remarks/>
-    Gone,
-    
-    /// <remarks/>
-    LengthRequired,
-    
-    /// <remarks/>
-    PreconditionFailed,
-    
-    /// <remarks/>
-    RequestEntityTooLarge,
-    
-    /// <remarks/>
-    RequestUriTooLong,
-    
-    /// <remarks/>
-    UnsupportedMediaType,
-    
-    /// <remarks/>
-    RequestedRangeNotSatisfiable,
-    
-    /// <remarks/>
-    ExpectationFailed,
-    
-    /// <remarks/>
-    InternalServerError,
-    
-    /// <remarks/>
-    NotImplemented,
-    
-    /// <remarks/>
-    BadGateway,
-    
-    /// <remarks/>
-    ServiceUnavailable,
-    
-    /// <remarks/>
-    GatewayTimeout,
-    
-    /// <remarks/>
-    HttpVersionNotSupported,
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void RemoveServicePrincipalByAppPrincipalIdCompletedEventHandler(object sender, RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration.WebServic" +
+    "e")]
+public partial class RemoveServicePrincipalByAppPrincipalIdRequest : Request {
     
-    private object[] results;
-    
-    internal RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
+    private string appPrincipalIdField;
     
     /// <remarks/>
-    public Response Result {
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+    public string AppPrincipalId {
         get {
-            this.RaiseExceptionIfNecessary();
-            return ((Response)(this.results[0]));
+            return this.appPrincipalIdField;
         }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void RemoveServicePrincipalBySpnCompletedEventHandler(object sender, RemoveServicePrincipalBySpnCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class RemoveServicePrincipalBySpnCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal RemoveServicePrincipalBySpnCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public Response Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((Response)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void GetServicePrincipalCompletedEventHandler(object sender, GetServicePrincipalCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class GetServicePrincipalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal GetServicePrincipalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public GetServicePrincipalResponse Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((GetServicePrincipalResponse)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void GetServicePrincipalByAppPrincipalIdCompletedEventHandler(object sender, GetServicePrincipalByAppPrincipalIdCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class GetServicePrincipalByAppPrincipalIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal GetServicePrincipalByAppPrincipalIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public GetServicePrincipalByAppPrincipalIdResponse Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((GetServicePrincipalByAppPrincipalIdResponse)(this.results[0]));
+        set {
+            this.appPrincipalIdField = value;
         }
     }
 }
@@ -16972,32 +16627,6 @@ public partial class ListServicePrincipalCredentialsBySpnCompletedEventArgs : Sy
         get {
             this.RaiseExceptionIfNecessary();
             return ((ListServicePrincipalCredentialsBySpnResponse)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void NavigateGroupMemberResultsCompletedEventHandler(object sender, NavigateGroupMemberResultsCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class NavigateGroupMemberResultsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal NavigateGroupMemberResultsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public NavigateGroupMemberResultsResponse Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((NavigateGroupMemberResultsResponse)(this.results[0]));
         }
     }
 }
@@ -17680,32 +17309,6 @@ public partial class ListUsersCompletedEventArgs : System.ComponentModel.AsyncCo
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void ListUsersByStrongAuthenticationCompletedEventHandler(object sender, ListUsersByStrongAuthenticationCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class ListUsersByStrongAuthenticationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal ListUsersByStrongAuthenticationCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public ListUsersByStrongAuthenticationResponse Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((ListUsersByStrongAuthenticationResponse)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
 public delegate void NavigateUserResultsCompletedEventHandler(object sender, NavigateUserResultsCompletedEventArgs e);
 
 /// <remarks/>
@@ -17888,58 +17491,6 @@ public partial class RestoreUserByUpnCompletedEventArgs : System.ComponentModel.
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void ResetStrongAuthenticationMethodByUpnCompletedEventHandler(object sender, ResetStrongAuthenticationMethodByUpnCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class ResetStrongAuthenticationMethodByUpnCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal ResetStrongAuthenticationMethodByUpnCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public Response Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((Response)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void DeleteApplicationPasswordCompletedEventHandler(object sender, DeleteApplicationPasswordCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class DeleteApplicationPasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal DeleteApplicationPasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public Response Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((Response)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
 public delegate void AddServicePrincipalCompletedEventHandler(object sender, AddServicePrincipalCompletedEventArgs e);
 
 /// <remarks/>
@@ -18070,6 +17621,110 @@ public partial class RemoveServicePrincipalCompletedEventArgs : System.Component
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void RemoveServicePrincipalByAppPrincipalIdCompletedEventHandler(object sender, RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public Response Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((Response)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void RemoveServicePrincipalBySpnCompletedEventHandler(object sender, RemoveServicePrincipalBySpnCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class RemoveServicePrincipalBySpnCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal RemoveServicePrincipalBySpnCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public Response Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((Response)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void GetServicePrincipalCompletedEventHandler(object sender, GetServicePrincipalCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class GetServicePrincipalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal GetServicePrincipalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public GetServicePrincipalResponse Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((GetServicePrincipalResponse)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void GetServicePrincipalByAppPrincipalIdCompletedEventHandler(object sender, GetServicePrincipalByAppPrincipalIdCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class GetServicePrincipalByAppPrincipalIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal GetServicePrincipalByAppPrincipalIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public GetServicePrincipalByAppPrincipalIdResponse Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((GetServicePrincipalByAppPrincipalIdResponse)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
 public delegate void GetHeaderInfoCompletedEventHandler(object sender, GetHeaderInfoCompletedEventArgs e);
 
 /// <remarks/>
@@ -18090,32 +17745,6 @@ public partial class GetHeaderInfoCompletedEventArgs : System.ComponentModel.Asy
         get {
             this.RaiseExceptionIfNecessary();
             return ((GetHeaderInfoResponse)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void GetServiceStatusCompletedEventHandler(object sender, GetServiceStatusCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class GetServiceStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal GetServiceStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public HttpStatusCode Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((HttpStatusCode)(this.results[0]));
         }
     }
 }
@@ -19156,6 +18785,32 @@ public partial class ListGroupMembersCompletedEventArgs : System.ComponentModel.
         get {
             this.RaiseExceptionIfNecessary();
             return ((ListGroupMembersResponse)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void NavigateGroupMemberResultsCompletedEventHandler(object sender, NavigateGroupMemberResultsCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class NavigateGroupMemberResultsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal NavigateGroupMemberResultsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public NavigateGroupMemberResultsResponse Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((NavigateGroupMemberResultsResponse)(this.results[0]));
         }
     }
 }
