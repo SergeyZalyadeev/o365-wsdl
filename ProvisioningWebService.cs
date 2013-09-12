@@ -31,6 +31,14 @@ using System.Xml.Serialization;
 [System.Xml.Serialization.XmlIncludeAttribute(typeof(SearchDefinition))]
 public partial class ProvisioningWebService : System.Web.Services.Protocols.SoapHttpClientProtocol {
     
+    private System.Threading.SendOrPostCallback RemoveServicePrincipalByAppPrincipalIdOperationCompleted;
+    
+    private System.Threading.SendOrPostCallback RemoveServicePrincipalBySpnOperationCompleted;
+    
+    private System.Threading.SendOrPostCallback GetServicePrincipalOperationCompleted;
+    
+    private System.Threading.SendOrPostCallback GetServicePrincipalByAppPrincipalIdOperationCompleted;
+    
     private System.Threading.SendOrPostCallback GetServicePrincipalBySpnOperationCompleted;
     
     private System.Threading.SendOrPostCallback RemoveServicePrincipalCredentialsOperationCompleted;
@@ -50,6 +58,8 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     private System.Threading.SendOrPostCallback ListServicePrincipalCredentialsByAppPrincipalIdOperationCompleted;
     
     private System.Threading.SendOrPostCallback ListServicePrincipalCredentialsBySpnOperationCompleted;
+    
+    private System.Threading.SendOrPostCallback NavigateGroupMemberResultsOperationCompleted;
     
     private System.Threading.SendOrPostCallback RetryGroupProvisioningOperationCompleted;
     
@@ -103,6 +113,8 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     
     private System.Threading.SendOrPostCallback ListUsersOperationCompleted;
     
+    private System.Threading.SendOrPostCallback ListUsersByStrongAuthenticationOperationCompleted;
+    
     private System.Threading.SendOrPostCallback NavigateUserResultsOperationCompleted;
     
     private System.Threading.SendOrPostCallback SetUserLicensesOperationCompleted;
@@ -117,6 +129,10 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     
     private System.Threading.SendOrPostCallback RestoreUserByUpnOperationCompleted;
     
+    private System.Threading.SendOrPostCallback ResetStrongAuthenticationMethodByUpnOperationCompleted;
+    
+    private System.Threading.SendOrPostCallback DeleteApplicationPasswordOperationCompleted;
+    
     private System.Threading.SendOrPostCallback AddServicePrincipalOperationCompleted;
     
     private System.Threading.SendOrPostCallback AddServicePrincipalCredentialsOperationCompleted;
@@ -127,15 +143,9 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     
     private System.Threading.SendOrPostCallback RemoveServicePrincipalOperationCompleted;
     
-    private System.Threading.SendOrPostCallback RemoveServicePrincipalByAppPrincipalIdOperationCompleted;
-    
-    private System.Threading.SendOrPostCallback RemoveServicePrincipalBySpnOperationCompleted;
-    
-    private System.Threading.SendOrPostCallback GetServicePrincipalOperationCompleted;
-    
-    private System.Threading.SendOrPostCallback GetServicePrincipalByAppPrincipalIdOperationCompleted;
-    
     private System.Threading.SendOrPostCallback GetHeaderInfoOperationCompleted;
+    
+    private System.Threading.SendOrPostCallback GetServiceStatusOperationCompleted;
     
     private System.Threading.SendOrPostCallback MsolConnectOperationCompleted;
     
@@ -217,13 +227,23 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     
     private System.Threading.SendOrPostCallback ListGroupMembersOperationCompleted;
     
-    private System.Threading.SendOrPostCallback NavigateGroupMemberResultsOperationCompleted;
-    
     /// <remarks/>
     public ProvisioningWebService() {
         this.SoapVersion = System.Web.Services.Protocols.SoapProtocolVersion.Soap12;
         this.Url = "https://provisioningapi.microsoftonline.com/ProvisioningWebService.svc";
     }
+    
+    /// <remarks/>
+    public event RemoveServicePrincipalByAppPrincipalIdCompletedEventHandler RemoveServicePrincipalByAppPrincipalIdCompleted;
+    
+    /// <remarks/>
+    public event RemoveServicePrincipalBySpnCompletedEventHandler RemoveServicePrincipalBySpnCompleted;
+    
+    /// <remarks/>
+    public event GetServicePrincipalCompletedEventHandler GetServicePrincipalCompleted;
+    
+    /// <remarks/>
+    public event GetServicePrincipalByAppPrincipalIdCompletedEventHandler GetServicePrincipalByAppPrincipalIdCompleted;
     
     /// <remarks/>
     public event GetServicePrincipalBySpnCompletedEventHandler GetServicePrincipalBySpnCompleted;
@@ -254,6 +274,9 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     
     /// <remarks/>
     public event ListServicePrincipalCredentialsBySpnCompletedEventHandler ListServicePrincipalCredentialsBySpnCompleted;
+    
+    /// <remarks/>
+    public event NavigateGroupMemberResultsCompletedEventHandler NavigateGroupMemberResultsCompleted;
     
     /// <remarks/>
     public event RetryGroupProvisioningCompletedEventHandler RetryGroupProvisioningCompleted;
@@ -334,6 +357,9 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     public event ListUsersCompletedEventHandler ListUsersCompleted;
     
     /// <remarks/>
+    public event ListUsersByStrongAuthenticationCompletedEventHandler ListUsersByStrongAuthenticationCompleted;
+    
+    /// <remarks/>
     public event NavigateUserResultsCompletedEventHandler NavigateUserResultsCompleted;
     
     /// <remarks/>
@@ -355,6 +381,12 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     public event RestoreUserByUpnCompletedEventHandler RestoreUserByUpnCompleted;
     
     /// <remarks/>
+    public event ResetStrongAuthenticationMethodByUpnCompletedEventHandler ResetStrongAuthenticationMethodByUpnCompleted;
+    
+    /// <remarks/>
+    public event DeleteApplicationPasswordCompletedEventHandler DeleteApplicationPasswordCompleted;
+    
+    /// <remarks/>
     public event AddServicePrincipalCompletedEventHandler AddServicePrincipalCompleted;
     
     /// <remarks/>
@@ -370,19 +402,10 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     public event RemoveServicePrincipalCompletedEventHandler RemoveServicePrincipalCompleted;
     
     /// <remarks/>
-    public event RemoveServicePrincipalByAppPrincipalIdCompletedEventHandler RemoveServicePrincipalByAppPrincipalIdCompleted;
-    
-    /// <remarks/>
-    public event RemoveServicePrincipalBySpnCompletedEventHandler RemoveServicePrincipalBySpnCompleted;
-    
-    /// <remarks/>
-    public event GetServicePrincipalCompletedEventHandler GetServicePrincipalCompleted;
-    
-    /// <remarks/>
-    public event GetServicePrincipalByAppPrincipalIdCompletedEventHandler GetServicePrincipalByAppPrincipalIdCompleted;
-    
-    /// <remarks/>
     public event GetHeaderInfoCompletedEventHandler GetHeaderInfoCompleted;
+    
+    /// <remarks/>
+    public event GetServiceStatusCompletedEventHandler GetServiceStatusCompleted;
     
     /// <remarks/>
     public event MsolConnectCompletedEventHandler MsolConnectCompleted;
@@ -505,7 +528,176 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     public event ListGroupMembersCompletedEventHandler ListGroupMembersCompleted;
     
     /// <remarks/>
-    public event NavigateGroupMemberResultsCompletedEventHandler NavigateGroupMemberResultsCompleted;
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/RemoveServicePrin" +
+        "cipalByAppPrincipalId", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public Response RemoveServicePrincipalByAppPrincipalId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] RemoveServicePrincipalByAppPrincipalIdRequest request) {
+        object[] results = this.Invoke("RemoveServicePrincipalByAppPrincipalId", new object[] {
+                    request});
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginRemoveServicePrincipalByAppPrincipalId(RemoveServicePrincipalByAppPrincipalIdRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("RemoveServicePrincipalByAppPrincipalId", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public Response EndRemoveServicePrincipalByAppPrincipalId(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void RemoveServicePrincipalByAppPrincipalIdAsync(RemoveServicePrincipalByAppPrincipalIdRequest request) {
+        this.RemoveServicePrincipalByAppPrincipalIdAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void RemoveServicePrincipalByAppPrincipalIdAsync(RemoveServicePrincipalByAppPrincipalIdRequest request, object userState) {
+        if ((this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted == null)) {
+            this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveServicePrincipalByAppPrincipalIdOperationCompleted);
+        }
+        this.InvokeAsync("RemoveServicePrincipalByAppPrincipalId", new object[] {
+                    request}, this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted, userState);
+    }
+    
+    private void OnRemoveServicePrincipalByAppPrincipalIdOperationCompleted(object arg) {
+        if ((this.RemoveServicePrincipalByAppPrincipalIdCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.RemoveServicePrincipalByAppPrincipalIdCompleted(this, new RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/RemoveServicePrin" +
+        "cipalBySpn", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public Response RemoveServicePrincipalBySpn([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] RemoveServicePrincipalBySpnRequest request) {
+        object[] results = this.Invoke("RemoveServicePrincipalBySpn", new object[] {
+                    request});
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginRemoveServicePrincipalBySpn(RemoveServicePrincipalBySpnRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("RemoveServicePrincipalBySpn", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public Response EndRemoveServicePrincipalBySpn(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void RemoveServicePrincipalBySpnAsync(RemoveServicePrincipalBySpnRequest request) {
+        this.RemoveServicePrincipalBySpnAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void RemoveServicePrincipalBySpnAsync(RemoveServicePrincipalBySpnRequest request, object userState) {
+        if ((this.RemoveServicePrincipalBySpnOperationCompleted == null)) {
+            this.RemoveServicePrincipalBySpnOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveServicePrincipalBySpnOperationCompleted);
+        }
+        this.InvokeAsync("RemoveServicePrincipalBySpn", new object[] {
+                    request}, this.RemoveServicePrincipalBySpnOperationCompleted, userState);
+    }
+    
+    private void OnRemoveServicePrincipalBySpnOperationCompleted(object arg) {
+        if ((this.RemoveServicePrincipalBySpnCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.RemoveServicePrincipalBySpnCompleted(this, new RemoveServicePrincipalBySpnCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServicePrincip" +
+        "al", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public GetServicePrincipalResponse GetServicePrincipal([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] GetServicePrincipalRequest request) {
+        object[] results = this.Invoke("GetServicePrincipal", new object[] {
+                    request});
+        return ((GetServicePrincipalResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginGetServicePrincipal(GetServicePrincipalRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("GetServicePrincipal", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public GetServicePrincipalResponse EndGetServicePrincipal(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((GetServicePrincipalResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void GetServicePrincipalAsync(GetServicePrincipalRequest request) {
+        this.GetServicePrincipalAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void GetServicePrincipalAsync(GetServicePrincipalRequest request, object userState) {
+        if ((this.GetServicePrincipalOperationCompleted == null)) {
+            this.GetServicePrincipalOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetServicePrincipalOperationCompleted);
+        }
+        this.InvokeAsync("GetServicePrincipal", new object[] {
+                    request}, this.GetServicePrincipalOperationCompleted, userState);
+    }
+    
+    private void OnGetServicePrincipalOperationCompleted(object arg) {
+        if ((this.GetServicePrincipalCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.GetServicePrincipalCompleted(this, new GetServicePrincipalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServicePrincip" +
+        "alByAppPrincipalId", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public GetServicePrincipalByAppPrincipalIdResponse GetServicePrincipalByAppPrincipalId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] GetServicePrincipalByAppPrincipalIdRequest request) {
+        object[] results = this.Invoke("GetServicePrincipalByAppPrincipalId", new object[] {
+                    request});
+        return ((GetServicePrincipalByAppPrincipalIdResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginGetServicePrincipalByAppPrincipalId(GetServicePrincipalByAppPrincipalIdRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("GetServicePrincipalByAppPrincipalId", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public GetServicePrincipalByAppPrincipalIdResponse EndGetServicePrincipalByAppPrincipalId(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((GetServicePrincipalByAppPrincipalIdResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void GetServicePrincipalByAppPrincipalIdAsync(GetServicePrincipalByAppPrincipalIdRequest request) {
+        this.GetServicePrincipalByAppPrincipalIdAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void GetServicePrincipalByAppPrincipalIdAsync(GetServicePrincipalByAppPrincipalIdRequest request, object userState) {
+        if ((this.GetServicePrincipalByAppPrincipalIdOperationCompleted == null)) {
+            this.GetServicePrincipalByAppPrincipalIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetServicePrincipalByAppPrincipalIdOperationCompleted);
+        }
+        this.InvokeAsync("GetServicePrincipalByAppPrincipalId", new object[] {
+                    request}, this.GetServicePrincipalByAppPrincipalIdOperationCompleted, userState);
+    }
+    
+    private void OnGetServicePrincipalByAppPrincipalIdOperationCompleted(object arg) {
+        if ((this.GetServicePrincipalByAppPrincipalIdCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.GetServicePrincipalByAppPrincipalIdCompleted(this, new GetServicePrincipalByAppPrincipalIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
     
     /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServicePrincip" +
@@ -934,6 +1126,49 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
         if ((this.ListServicePrincipalCredentialsBySpnCompleted != null)) {
             System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
             this.ListServicePrincipalCredentialsBySpnCompleted(this, new ListServicePrincipalCredentialsBySpnCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/NavigateGroupMemb" +
+        "erResults", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public NavigateGroupMemberResultsResponse NavigateGroupMemberResults([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] NavigateGroupMemberResultsRequest request) {
+        object[] results = this.Invoke("NavigateGroupMemberResults", new object[] {
+                    request});
+        return ((NavigateGroupMemberResultsResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginNavigateGroupMemberResults(NavigateGroupMemberResultsRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("NavigateGroupMemberResults", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public NavigateGroupMemberResultsResponse EndNavigateGroupMemberResults(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((NavigateGroupMemberResultsResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void NavigateGroupMemberResultsAsync(NavigateGroupMemberResultsRequest request) {
+        this.NavigateGroupMemberResultsAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void NavigateGroupMemberResultsAsync(NavigateGroupMemberResultsRequest request, object userState) {
+        if ((this.NavigateGroupMemberResultsOperationCompleted == null)) {
+            this.NavigateGroupMemberResultsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnNavigateGroupMemberResultsOperationCompleted);
+        }
+        this.InvokeAsync("NavigateGroupMemberResults", new object[] {
+                    request}, this.NavigateGroupMemberResultsOperationCompleted, userState);
+    }
+    
+    private void OnNavigateGroupMemberResultsOperationCompleted(object arg) {
+        if ((this.NavigateGroupMemberResultsCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.NavigateGroupMemberResultsCompleted(this, new NavigateGroupMemberResultsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
         }
     }
     
@@ -2042,6 +2277,49 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     }
     
     /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/ListUsersByStrong" +
+        "Authentication", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public ListUsersByStrongAuthenticationResponse ListUsersByStrongAuthentication([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ListUsersByStrongAuthenticationRequest request) {
+        object[] results = this.Invoke("ListUsersByStrongAuthentication", new object[] {
+                    request});
+        return ((ListUsersByStrongAuthenticationResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginListUsersByStrongAuthentication(ListUsersByStrongAuthenticationRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("ListUsersByStrongAuthentication", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public ListUsersByStrongAuthenticationResponse EndListUsersByStrongAuthentication(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((ListUsersByStrongAuthenticationResponse)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void ListUsersByStrongAuthenticationAsync(ListUsersByStrongAuthenticationRequest request) {
+        this.ListUsersByStrongAuthenticationAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void ListUsersByStrongAuthenticationAsync(ListUsersByStrongAuthenticationRequest request, object userState) {
+        if ((this.ListUsersByStrongAuthenticationOperationCompleted == null)) {
+            this.ListUsersByStrongAuthenticationOperationCompleted = new System.Threading.SendOrPostCallback(this.OnListUsersByStrongAuthenticationOperationCompleted);
+        }
+        this.InvokeAsync("ListUsersByStrongAuthentication", new object[] {
+                    request}, this.ListUsersByStrongAuthenticationOperationCompleted, userState);
+    }
+    
+    private void OnListUsersByStrongAuthenticationOperationCompleted(object arg) {
+        if ((this.ListUsersByStrongAuthenticationCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.ListUsersByStrongAuthenticationCompleted(this, new ListUsersByStrongAuthenticationCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/NavigateUserResul" +
         "ts", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
     [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
@@ -2340,6 +2618,92 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     }
     
     /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/ResetStrongAuthen" +
+        "ticationMethodByUpn", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public Response ResetStrongAuthenticationMethodByUpn([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ResetStrongAuthenticationMethodByUpnRequest request) {
+        object[] results = this.Invoke("ResetStrongAuthenticationMethodByUpn", new object[] {
+                    request});
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginResetStrongAuthenticationMethodByUpn(ResetStrongAuthenticationMethodByUpnRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("ResetStrongAuthenticationMethodByUpn", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public Response EndResetStrongAuthenticationMethodByUpn(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void ResetStrongAuthenticationMethodByUpnAsync(ResetStrongAuthenticationMethodByUpnRequest request) {
+        this.ResetStrongAuthenticationMethodByUpnAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void ResetStrongAuthenticationMethodByUpnAsync(ResetStrongAuthenticationMethodByUpnRequest request, object userState) {
+        if ((this.ResetStrongAuthenticationMethodByUpnOperationCompleted == null)) {
+            this.ResetStrongAuthenticationMethodByUpnOperationCompleted = new System.Threading.SendOrPostCallback(this.OnResetStrongAuthenticationMethodByUpnOperationCompleted);
+        }
+        this.InvokeAsync("ResetStrongAuthenticationMethodByUpn", new object[] {
+                    request}, this.ResetStrongAuthenticationMethodByUpnOperationCompleted, userState);
+    }
+    
+    private void OnResetStrongAuthenticationMethodByUpnOperationCompleted(object arg) {
+        if ((this.ResetStrongAuthenticationMethodByUpnCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.ResetStrongAuthenticationMethodByUpnCompleted(this, new ResetStrongAuthenticationMethodByUpnCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/DeleteApplication" +
+        "Password", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public Response DeleteApplicationPassword([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] DeleteApplicationPasswordRequest request) {
+        object[] results = this.Invoke("DeleteApplicationPassword", new object[] {
+                    request});
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginDeleteApplicationPassword(DeleteApplicationPasswordRequest request, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("DeleteApplicationPassword", new object[] {
+                    request}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public Response EndDeleteApplicationPassword(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((Response)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void DeleteApplicationPasswordAsync(DeleteApplicationPasswordRequest request) {
+        this.DeleteApplicationPasswordAsync(request, null);
+    }
+    
+    /// <remarks/>
+    public void DeleteApplicationPasswordAsync(DeleteApplicationPasswordRequest request, object userState) {
+        if ((this.DeleteApplicationPasswordOperationCompleted == null)) {
+            this.DeleteApplicationPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteApplicationPasswordOperationCompleted);
+        }
+        this.InvokeAsync("DeleteApplicationPassword", new object[] {
+                    request}, this.DeleteApplicationPasswordOperationCompleted, userState);
+    }
+    
+    private void OnDeleteApplicationPasswordOperationCompleted(object arg) {
+        if ((this.DeleteApplicationPasswordCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.DeleteApplicationPasswordCompleted(this, new DeleteApplicationPasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/AddServicePrincip" +
         "al", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
     [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
@@ -2555,178 +2919,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     }
     
     /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/RemoveServicePrin" +
-        "cipalByAppPrincipalId", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public Response RemoveServicePrincipalByAppPrincipalId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] RemoveServicePrincipalByAppPrincipalIdRequest request) {
-        object[] results = this.Invoke("RemoveServicePrincipalByAppPrincipalId", new object[] {
-                    request});
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginRemoveServicePrincipalByAppPrincipalId(RemoveServicePrincipalByAppPrincipalIdRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("RemoveServicePrincipalByAppPrincipalId", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public Response EndRemoveServicePrincipalByAppPrincipalId(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void RemoveServicePrincipalByAppPrincipalIdAsync(RemoveServicePrincipalByAppPrincipalIdRequest request) {
-        this.RemoveServicePrincipalByAppPrincipalIdAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void RemoveServicePrincipalByAppPrincipalIdAsync(RemoveServicePrincipalByAppPrincipalIdRequest request, object userState) {
-        if ((this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted == null)) {
-            this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveServicePrincipalByAppPrincipalIdOperationCompleted);
-        }
-        this.InvokeAsync("RemoveServicePrincipalByAppPrincipalId", new object[] {
-                    request}, this.RemoveServicePrincipalByAppPrincipalIdOperationCompleted, userState);
-    }
-    
-    private void OnRemoveServicePrincipalByAppPrincipalIdOperationCompleted(object arg) {
-        if ((this.RemoveServicePrincipalByAppPrincipalIdCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.RemoveServicePrincipalByAppPrincipalIdCompleted(this, new RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/RemoveServicePrin" +
-        "cipalBySpn", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public Response RemoveServicePrincipalBySpn([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] RemoveServicePrincipalBySpnRequest request) {
-        object[] results = this.Invoke("RemoveServicePrincipalBySpn", new object[] {
-                    request});
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginRemoveServicePrincipalBySpn(RemoveServicePrincipalBySpnRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("RemoveServicePrincipalBySpn", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public Response EndRemoveServicePrincipalBySpn(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((Response)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void RemoveServicePrincipalBySpnAsync(RemoveServicePrincipalBySpnRequest request) {
-        this.RemoveServicePrincipalBySpnAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void RemoveServicePrincipalBySpnAsync(RemoveServicePrincipalBySpnRequest request, object userState) {
-        if ((this.RemoveServicePrincipalBySpnOperationCompleted == null)) {
-            this.RemoveServicePrincipalBySpnOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveServicePrincipalBySpnOperationCompleted);
-        }
-        this.InvokeAsync("RemoveServicePrincipalBySpn", new object[] {
-                    request}, this.RemoveServicePrincipalBySpnOperationCompleted, userState);
-    }
-    
-    private void OnRemoveServicePrincipalBySpnOperationCompleted(object arg) {
-        if ((this.RemoveServicePrincipalBySpnCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.RemoveServicePrincipalBySpnCompleted(this, new RemoveServicePrincipalBySpnCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServicePrincip" +
-        "al", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public GetServicePrincipalResponse GetServicePrincipal([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] GetServicePrincipalRequest request) {
-        object[] results = this.Invoke("GetServicePrincipal", new object[] {
-                    request});
-        return ((GetServicePrincipalResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginGetServicePrincipal(GetServicePrincipalRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("GetServicePrincipal", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public GetServicePrincipalResponse EndGetServicePrincipal(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((GetServicePrincipalResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void GetServicePrincipalAsync(GetServicePrincipalRequest request) {
-        this.GetServicePrincipalAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void GetServicePrincipalAsync(GetServicePrincipalRequest request, object userState) {
-        if ((this.GetServicePrincipalOperationCompleted == null)) {
-            this.GetServicePrincipalOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetServicePrincipalOperationCompleted);
-        }
-        this.InvokeAsync("GetServicePrincipal", new object[] {
-                    request}, this.GetServicePrincipalOperationCompleted, userState);
-    }
-    
-    private void OnGetServicePrincipalOperationCompleted(object arg) {
-        if ((this.GetServicePrincipalCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.GetServicePrincipalCompleted(this, new GetServicePrincipalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServicePrincip" +
-        "alByAppPrincipalId", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public GetServicePrincipalByAppPrincipalIdResponse GetServicePrincipalByAppPrincipalId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] GetServicePrincipalByAppPrincipalIdRequest request) {
-        object[] results = this.Invoke("GetServicePrincipalByAppPrincipalId", new object[] {
-                    request});
-        return ((GetServicePrincipalByAppPrincipalIdResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginGetServicePrincipalByAppPrincipalId(GetServicePrincipalByAppPrincipalIdRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("GetServicePrincipalByAppPrincipalId", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public GetServicePrincipalByAppPrincipalIdResponse EndGetServicePrincipalByAppPrincipalId(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((GetServicePrincipalByAppPrincipalIdResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void GetServicePrincipalByAppPrincipalIdAsync(GetServicePrincipalByAppPrincipalIdRequest request) {
-        this.GetServicePrincipalByAppPrincipalIdAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void GetServicePrincipalByAppPrincipalIdAsync(GetServicePrincipalByAppPrincipalIdRequest request, object userState) {
-        if ((this.GetServicePrincipalByAppPrincipalIdOperationCompleted == null)) {
-            this.GetServicePrincipalByAppPrincipalIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetServicePrincipalByAppPrincipalIdOperationCompleted);
-        }
-        this.InvokeAsync("GetServicePrincipalByAppPrincipalId", new object[] {
-                    request}, this.GetServicePrincipalByAppPrincipalIdOperationCompleted, userState);
-    }
-    
-    private void OnGetServicePrincipalByAppPrincipalIdOperationCompleted(object arg) {
-        if ((this.GetServicePrincipalByAppPrincipalIdCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.GetServicePrincipalByAppPrincipalIdCompleted(this, new GetServicePrincipalByAppPrincipalIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetHeaderInfo", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
     [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public GetHeaderInfoResponse GetHeaderInfo([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Request request) {
@@ -2765,6 +2957,44 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
         if ((this.GetHeaderInfoCompleted != null)) {
             System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
             this.GetHeaderInfoCompleted(this, new GetHeaderInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/GetServiceStatus", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    public HttpStatusCode GetServiceStatus() {
+        object[] results = this.Invoke("GetServiceStatus", new object[0]);
+        return ((HttpStatusCode)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginGetServiceStatus(System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("GetServiceStatus", new object[0], callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public HttpStatusCode EndGetServiceStatus(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((HttpStatusCode)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void GetServiceStatusAsync() {
+        this.GetServiceStatusAsync(null);
+    }
+    
+    /// <remarks/>
+    public void GetServiceStatusAsync(object userState) {
+        if ((this.GetServiceStatusOperationCompleted == null)) {
+            this.GetServiceStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetServiceStatusOperationCompleted);
+        }
+        this.InvokeAsync("GetServiceStatus", new object[0], this.GetServiceStatusOperationCompleted, userState);
+    }
+    
+    private void OnGetServiceStatusOperationCompleted(object arg) {
+        if ((this.GetServiceStatusCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.GetServiceStatusCompleted(this, new GetServiceStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
         }
     }
     
@@ -4470,49 +4700,6 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
     }
     
     /// <remarks/>
-    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://provisioning.microsoftonline.com/IProvisioningWebService/NavigateGroupMemb" +
-        "erResults", RequestNamespace="http://provisioning.microsoftonline.com/", ResponseNamespace="http://provisioning.microsoftonline.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public NavigateGroupMemberResultsResponse NavigateGroupMemberResults([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] NavigateGroupMemberResultsRequest request) {
-        object[] results = this.Invoke("NavigateGroupMemberResults", new object[] {
-                    request});
-        return ((NavigateGroupMemberResultsResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public System.IAsyncResult BeginNavigateGroupMemberResults(NavigateGroupMemberResultsRequest request, System.AsyncCallback callback, object asyncState) {
-        return this.BeginInvoke("NavigateGroupMemberResults", new object[] {
-                    request}, callback, asyncState);
-    }
-    
-    /// <remarks/>
-    public NavigateGroupMemberResultsResponse EndNavigateGroupMemberResults(System.IAsyncResult asyncResult) {
-        object[] results = this.EndInvoke(asyncResult);
-        return ((NavigateGroupMemberResultsResponse)(results[0]));
-    }
-    
-    /// <remarks/>
-    public void NavigateGroupMemberResultsAsync(NavigateGroupMemberResultsRequest request) {
-        this.NavigateGroupMemberResultsAsync(request, null);
-    }
-    
-    /// <remarks/>
-    public void NavigateGroupMemberResultsAsync(NavigateGroupMemberResultsRequest request, object userState) {
-        if ((this.NavigateGroupMemberResultsOperationCompleted == null)) {
-            this.NavigateGroupMemberResultsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnNavigateGroupMemberResultsOperationCompleted);
-        }
-        this.InvokeAsync("NavigateGroupMemberResults", new object[] {
-                    request}, this.NavigateGroupMemberResultsOperationCompleted, userState);
-    }
-    
-    private void OnNavigateGroupMemberResultsOperationCompleted(object arg) {
-        if ((this.NavigateGroupMemberResultsCompleted != null)) {
-            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-            this.NavigateGroupMemberResultsCompleted(this, new NavigateGroupMemberResultsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-        }
-    }
-    
-    /// <remarks/>
     public new void CancelAsync(object userState) {
         base.CancelAsync(userState);
     }
@@ -4525,18 +4712,17 @@ public partial class ProvisioningWebService : System.Web.Services.Protocols.Soap
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration.WebServic" +
     "e")]
-public partial class GetServicePrincipalBySpnRequest : Request {
+public partial class RemoveServicePrincipalByAppPrincipalIdRequest : Request {
     
-    private string servicePrincipalNameField;
+    private string appPrincipalIdField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public string ServicePrincipalName {
+    public string AppPrincipalId {
         get {
-            return this.servicePrincipalNameField;
+            return this.appPrincipalIdField;
         }
         set {
-            this.servicePrincipalNameField = value;
+            this.appPrincipalIdField = value;
         }
     }
 }
@@ -16198,6 +16384,29 @@ public partial class RemoveServicePrincipalCredentialsRequest : Request {
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration.WebServic" +
     "e")]
+public partial class GetServicePrincipalBySpnRequest : Request {
+    
+    private string servicePrincipalNameField;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public string ServicePrincipalName {
+        get {
+            return this.servicePrincipalNameField;
+        }
+        set {
+            this.servicePrincipalNameField = value;
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration.WebServic" +
+    "e")]
 public partial class GetServicePrincipalByAppPrincipalIdRequest : Request {
     
     private string appPrincipalIdField;
@@ -16261,21 +16470,248 @@ public partial class RemoveServicePrincipalBySpnRequest : Request {
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
 [System.SerializableAttribute()]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Online.Administration.WebServic" +
-    "e")]
-public partial class RemoveServicePrincipalByAppPrincipalIdRequest : Request {
-    
-    private string appPrincipalIdField;
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://provisioning.microsoftonline.com/")]
+public enum HttpStatusCode {
     
     /// <remarks/>
-    public string AppPrincipalId {
+    Continue,
+    
+    /// <remarks/>
+    SwitchingProtocols,
+    
+    /// <remarks/>
+    OK,
+    
+    /// <remarks/>
+    Created,
+    
+    /// <remarks/>
+    Accepted,
+    
+    /// <remarks/>
+    NonAuthoritativeInformation,
+    
+    /// <remarks/>
+    NoContent,
+    
+    /// <remarks/>
+    ResetContent,
+    
+    /// <remarks/>
+    PartialContent,
+    
+    /// <remarks/>
+    MultipleChoices,
+    
+    /// <remarks/>
+    Ambiguous,
+    
+    /// <remarks/>
+    MovedPermanently,
+    
+    /// <remarks/>
+    Moved,
+    
+    /// <remarks/>
+    Found,
+    
+    /// <remarks/>
+    Redirect,
+    
+    /// <remarks/>
+    SeeOther,
+    
+    /// <remarks/>
+    RedirectMethod,
+    
+    /// <remarks/>
+    NotModified,
+    
+    /// <remarks/>
+    UseProxy,
+    
+    /// <remarks/>
+    Unused,
+    
+    /// <remarks/>
+    TemporaryRedirect,
+    
+    /// <remarks/>
+    RedirectKeepVerb,
+    
+    /// <remarks/>
+    BadRequest,
+    
+    /// <remarks/>
+    Unauthorized,
+    
+    /// <remarks/>
+    PaymentRequired,
+    
+    /// <remarks/>
+    Forbidden,
+    
+    /// <remarks/>
+    NotFound,
+    
+    /// <remarks/>
+    MethodNotAllowed,
+    
+    /// <remarks/>
+    NotAcceptable,
+    
+    /// <remarks/>
+    ProxyAuthenticationRequired,
+    
+    /// <remarks/>
+    RequestTimeout,
+    
+    /// <remarks/>
+    Conflict,
+    
+    /// <remarks/>
+    Gone,
+    
+    /// <remarks/>
+    LengthRequired,
+    
+    /// <remarks/>
+    PreconditionFailed,
+    
+    /// <remarks/>
+    RequestEntityTooLarge,
+    
+    /// <remarks/>
+    RequestUriTooLong,
+    
+    /// <remarks/>
+    UnsupportedMediaType,
+    
+    /// <remarks/>
+    RequestedRangeNotSatisfiable,
+    
+    /// <remarks/>
+    ExpectationFailed,
+    
+    /// <remarks/>
+    InternalServerError,
+    
+    /// <remarks/>
+    NotImplemented,
+    
+    /// <remarks/>
+    BadGateway,
+    
+    /// <remarks/>
+    ServiceUnavailable,
+    
+    /// <remarks/>
+    GatewayTimeout,
+    
+    /// <remarks/>
+    HttpVersionNotSupported,
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void RemoveServicePrincipalByAppPrincipalIdCompletedEventHandler(object sender, RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public Response Result {
         get {
-            return this.appPrincipalIdField;
+            this.RaiseExceptionIfNecessary();
+            return ((Response)(this.results[0]));
         }
-        set {
-            this.appPrincipalIdField = value;
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void RemoveServicePrincipalBySpnCompletedEventHandler(object sender, RemoveServicePrincipalBySpnCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class RemoveServicePrincipalBySpnCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal RemoveServicePrincipalBySpnCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public Response Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((Response)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void GetServicePrincipalCompletedEventHandler(object sender, GetServicePrincipalCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class GetServicePrincipalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal GetServicePrincipalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public GetServicePrincipalResponse Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((GetServicePrincipalResponse)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void GetServicePrincipalByAppPrincipalIdCompletedEventHandler(object sender, GetServicePrincipalByAppPrincipalIdCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class GetServicePrincipalByAppPrincipalIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal GetServicePrincipalByAppPrincipalIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public GetServicePrincipalByAppPrincipalIdResponse Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((GetServicePrincipalByAppPrincipalIdResponse)(this.results[0]));
         }
     }
 }
@@ -16536,6 +16972,32 @@ public partial class ListServicePrincipalCredentialsBySpnCompletedEventArgs : Sy
         get {
             this.RaiseExceptionIfNecessary();
             return ((ListServicePrincipalCredentialsBySpnResponse)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void NavigateGroupMemberResultsCompletedEventHandler(object sender, NavigateGroupMemberResultsCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class NavigateGroupMemberResultsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal NavigateGroupMemberResultsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public NavigateGroupMemberResultsResponse Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((NavigateGroupMemberResultsResponse)(this.results[0]));
         }
     }
 }
@@ -17218,6 +17680,32 @@ public partial class ListUsersCompletedEventArgs : System.ComponentModel.AsyncCo
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void ListUsersByStrongAuthenticationCompletedEventHandler(object sender, ListUsersByStrongAuthenticationCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class ListUsersByStrongAuthenticationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal ListUsersByStrongAuthenticationCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public ListUsersByStrongAuthenticationResponse Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((ListUsersByStrongAuthenticationResponse)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
 public delegate void NavigateUserResultsCompletedEventHandler(object sender, NavigateUserResultsCompletedEventArgs e);
 
 /// <remarks/>
@@ -17400,6 +17888,58 @@ public partial class RestoreUserByUpnCompletedEventArgs : System.ComponentModel.
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void ResetStrongAuthenticationMethodByUpnCompletedEventHandler(object sender, ResetStrongAuthenticationMethodByUpnCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class ResetStrongAuthenticationMethodByUpnCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal ResetStrongAuthenticationMethodByUpnCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public Response Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((Response)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void DeleteApplicationPasswordCompletedEventHandler(object sender, DeleteApplicationPasswordCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class DeleteApplicationPasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal DeleteApplicationPasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public Response Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((Response)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
 public delegate void AddServicePrincipalCompletedEventHandler(object sender, AddServicePrincipalCompletedEventArgs e);
 
 /// <remarks/>
@@ -17530,110 +18070,6 @@ public partial class RemoveServicePrincipalCompletedEventArgs : System.Component
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void RemoveServicePrincipalByAppPrincipalIdCompletedEventHandler(object sender, RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal RemoveServicePrincipalByAppPrincipalIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public Response Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((Response)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void RemoveServicePrincipalBySpnCompletedEventHandler(object sender, RemoveServicePrincipalBySpnCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class RemoveServicePrincipalBySpnCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal RemoveServicePrincipalBySpnCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public Response Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((Response)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void GetServicePrincipalCompletedEventHandler(object sender, GetServicePrincipalCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class GetServicePrincipalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal GetServicePrincipalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public GetServicePrincipalResponse Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((GetServicePrincipalResponse)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void GetServicePrincipalByAppPrincipalIdCompletedEventHandler(object sender, GetServicePrincipalByAppPrincipalIdCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class GetServicePrincipalByAppPrincipalIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal GetServicePrincipalByAppPrincipalIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public GetServicePrincipalByAppPrincipalIdResponse Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((GetServicePrincipalByAppPrincipalIdResponse)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
 public delegate void GetHeaderInfoCompletedEventHandler(object sender, GetHeaderInfoCompletedEventArgs e);
 
 /// <remarks/>
@@ -17654,6 +18090,32 @@ public partial class GetHeaderInfoCompletedEventArgs : System.ComponentModel.Asy
         get {
             this.RaiseExceptionIfNecessary();
             return ((GetHeaderInfoResponse)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+public delegate void GetServiceStatusCompletedEventHandler(object sender, GetServiceStatusCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class GetServiceStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal GetServiceStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public HttpStatusCode Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((HttpStatusCode)(this.results[0]));
         }
     }
 }
@@ -18694,32 +19156,6 @@ public partial class ListGroupMembersCompletedEventArgs : System.ComponentModel.
         get {
             this.RaiseExceptionIfNecessary();
             return ((ListGroupMembersResponse)(this.results[0]));
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-public delegate void NavigateGroupMemberResultsCompletedEventHandler(object sender, NavigateGroupMemberResultsCompletedEventArgs e);
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class NavigateGroupMemberResultsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
-    private object[] results;
-    
-    internal NavigateGroupMemberResultsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-            base(exception, cancelled, userState) {
-        this.results = results;
-    }
-    
-    /// <remarks/>
-    public NavigateGroupMemberResultsResponse Result {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((NavigateGroupMemberResultsResponse)(this.results[0]));
         }
     }
 }
